@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  iBeaconTest
 //
-//  Created by 田中葵 on 2018/04/14.
+//  Created by aoisupersix on 2018/04/14.
 //
 
 import UIKit
