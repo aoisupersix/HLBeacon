@@ -12,13 +12,18 @@ class ViewController: UIViewController {
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var rssiLabel: UILabel!
     
+    var uiUpdateTimer: Timer? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateStatus()
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateStatus), userInfo: nil, repeats: true)
+        uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateStatus), userInfo: nil, repeats: true)
     }
-
+    @IBAction func PerformTableViewTest(_ sender: Any) {
+        self.performSegue(withIdentifier: "ShowUserNameInputView", sender: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

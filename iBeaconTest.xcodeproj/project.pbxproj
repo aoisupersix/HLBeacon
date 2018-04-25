@@ -14,6 +14,7 @@
 		E1958884208230810085E034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1958883208230810085E034 /* Assets.xcassets */; };
 		E1958887208230810085E034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1958885208230810085E034 /* LaunchScreen.storyboard */; };
 		E19588912082408D0085E034 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19588902082408D0085E034 /* LocationManager.swift */; };
+		E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E1958886208230810085E034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1958888208230810085E034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E19588902082408D0085E034 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,9 @@
 		E195887B2082307F0085E034 /* iBeaconTest */ = {
 			isa = PBXGroup;
 			children = (
+				E19E6CC5209048DC0042F878 /* ViewController */,
+				E19E6CC4209048CA0042F878 /* View */,
 				E195887C2082307F0085E034 /* AppDelegate.swift */,
-				E195887E2082307F0085E034 /* ViewController.swift */,
 				E19588802082307F0085E034 /* Main.storyboard */,
 				E1958883208230810085E034 /* Assets.xcassets */,
 				E1958885208230810085E034 /* LaunchScreen.storyboard */,
@@ -89,6 +92,22 @@
 				E19588902082408D0085E034 /* LocationManager.swift */,
 			);
 			path = iBeaconTest;
+			sourceTree = "<group>";
+		};
+		E19E6CC4209048CA0042F878 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E19E6CC5209048DC0042F878 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E195887E2082307F0085E034 /* ViewController.swift */,
+				E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E195887F2082307F0085E034 /* ViewController.swift in Sources */,
+				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,
 				E19588912082408D0085E034 /* LocationManager.swift in Sources */,
 			);
@@ -358,7 +378,10 @@
 				DEVELOPMENT_TEAM = VCXQC2Y5WS;
 				INFOPLIST_FILE = iBeaconTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.iBeaconTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -375,7 +398,10 @@
 				DEVELOPMENT_TEAM = VCXQC2Y5WS;
 				INFOPLIST_FILE = iBeaconTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.iBeaconTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
