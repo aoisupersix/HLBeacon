@@ -15,7 +15,6 @@
 		E1958887208230810085E034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1958885208230810085E034 /* LaunchScreen.storyboard */; };
 		E19588912082408D0085E034 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19588902082408D0085E034 /* LocationManager.swift */; };
 		E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */; };
-		E19E6CCB2090A08A0042F878 /* SlackApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CCA2090A08A0042F878 /* SlackApiManager.swift */; };
 		E19E6CCE2090A15C0042F878 /* SlackUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CCD2090A15C0042F878 /* SlackUserData.swift */; };
 		E19E6CD22092FA000042F878 /* .env in Resources */ = {isa = PBXBuildFile; fileRef = E19E6CD12092FA000042F878 /* .env */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 		E1958888208230810085E034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E19588902082408D0085E034 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
-		E19E6CCA2090A08A0042F878 /* SlackApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackApiManager.swift; sourceTree = "<group>"; };
 		E19E6CCD2090A15C0042F878 /* SlackUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackUserData.swift; sourceTree = "<group>"; };
 		E19E6CD12092FA000042F878 /* .env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,7 +119,6 @@
 		E19E6CCC2090A1350042F878 /* Slack */ = {
 			isa = PBXGroup;
 			children = (
-				E19E6CCA2090A08A0042F878 /* SlackApiManager.swift */,
 				E19E6CCD2090A15C0042F878 /* SlackUserData.swift */,
 			);
 			path = Slack;
@@ -225,7 +222,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E19E6CCB2090A08A0042F878 /* SlackApiManager.swift in Sources */,
 				E195887F2082307F0085E034 /* ViewController.swift in Sources */,
 				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,

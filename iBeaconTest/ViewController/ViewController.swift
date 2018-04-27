@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     var uiUpdateTimer: Timer? = nil
     
+    ///SlackAPIを叩いてユーザリストを取得します
     private func getUsers() {
         isCompleteUsersConnection = false
         let env = ProcessInfo.processInfo.environment
@@ -26,16 +27,18 @@ class ViewController: UIViewController {
         request.httpMethod = "POST"
         
         URLSession.shared.dataTask(with: request) { data, response, err in
-            if err == nil {
-                print("SLACK-USERS-GET: Success")
-            }
-            else {
+            if err != nil {
                 print("SLACK-USERS-GET: Failed")
-                print("err:\(err!)")
+                return;
             }
+            print("SLACK-USERS-GET: Success")
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
                 print(json)
+                if (json["ok"] as! Int) != 1 {
+                    print("SLACK-USERS-GET: Failed. API ERROR")
+                    return;
+                }
                 for member in json["members"] as! NSArray {
                     let m = member as! NSDictionary
                     if (m["deleted"] as! Bool) == false {
@@ -61,6 +64,7 @@ class ViewController: UIViewController {
         updateStatus()
         uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateStatus), userInfo: nil, repeats: true)
     }
+    
     @IBAction func PerformTableViewTest(_ sender: Any) {
         if isCompleteUsersConnection {
             print(users)
