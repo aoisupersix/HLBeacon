@@ -17,7 +17,7 @@
 		E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */; };
 		E19E6CCB2090A08A0042F878 /* SlackApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CCA2090A08A0042F878 /* SlackApiManager.swift */; };
 		E19E6CCE2090A15C0042F878 /* SlackUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CCD2090A15C0042F878 /* SlackUserData.swift */; };
-		E19E6CD02090BD500042F878 /* SlackConstans.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CCF2090BD500042F878 /* SlackConstans.swift */; };
+		E19E6CD22092FA000042F878 /* .env in Resources */ = {isa = PBXBuildFile; fileRef = E19E6CD12092FA000042F878 /* .env */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
 		E19E6CCA2090A08A0042F878 /* SlackApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackApiManager.swift; sourceTree = "<group>"; };
 		E19E6CCD2090A15C0042F878 /* SlackUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackUserData.swift; sourceTree = "<group>"; };
-		E19E6CCF2090BD500042F878 /* SlackConstans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackConstans.swift; sourceTree = "<group>"; };
+		E19E6CD12092FA000042F878 /* .env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +88,7 @@
 		E195887B2082307F0085E034 /* iBeaconTest */ = {
 			isa = PBXGroup;
 			children = (
+				E19E6CD12092FA000042F878 /* .env */,
 				E19E6CCC2090A1350042F878 /* Slack */,
 				E19E6CC5209048DC0042F878 /* ViewController */,
 				E19E6CC4209048CA0042F878 /* View */,
@@ -122,7 +123,6 @@
 			children = (
 				E19E6CCA2090A08A0042F878 /* SlackApiManager.swift */,
 				E19E6CCD2090A15C0042F878 /* SlackUserData.swift */,
-				E19E6CCF2090BD500042F878 /* SlackConstans.swift */,
 			);
 			path = Slack;
 			sourceTree = "<group>";
@@ -193,6 +193,7 @@
 				E1958887208230810085E034 /* LaunchScreen.storyboard in Resources */,
 				E1958884208230810085E034 /* Assets.xcassets in Resources */,
 				E19588822082307F0085E034 /* Main.storyboard in Resources */,
+				E19E6CD22092FA000042F878 /* .env in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +226,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19E6CCB2090A08A0042F878 /* SlackApiManager.swift in Sources */,
-				E19E6CD02090BD500042F878 /* SlackConstans.swift in Sources */,
 				E195887F2082307F0085E034 /* ViewController.swift in Sources */,
 				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,
@@ -379,7 +379,10 @@
 				DEVELOPMENT_TEAM = VCXQC2Y5WS;
 				INFOPLIST_FILE = iBeaconTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.iBeaconTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -396,7 +399,10 @@
 				DEVELOPMENT_TEAM = VCXQC2Y5WS;
 				INFOPLIST_FILE = iBeaconTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.iBeaconTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

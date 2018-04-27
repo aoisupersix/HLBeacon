@@ -7,7 +7,6 @@
 
 import CoreLocation
 import UserNotifications
-import Alamofire
 
 class LocationManager: CLLocationManager {
     
@@ -122,7 +121,6 @@ extension LocationManager: CLLocationManagerDelegate {
     
     private func sendEnterNotify(title: String) {
         sendNotification(title: title, body: "家に帰ってきました。")
-        postTest(key: "key desu")
     }
     
     private func sendNotification(title: String, body: String) {
@@ -136,22 +134,5 @@ extension LocationManager: CLLocationManagerDelegate {
         
         UNUserNotificationCenter.current().add(request)
 
-    }
-    
-    private func postTest(key: String) {
-        let url = "https://script.google.com/macros/s/AKfycbxHgMYF447SDengcrq40vsHlPg3MkR6DgYQHG612jn-TzioBE3D/exec"
-        let contents = [
-            "key": key
-        ]
-        Alamofire.request(url, method: .post, parameters: contents, encoding: JSONEncoding.default)
-            .downloadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-                print("Progress: \(progress.fractionCompleted)")
-            }
-            .validate { request, response, data in
-                return .success
-            }
-            .responseJSON { response in
-                debugPrint(response)
-            }
     }
 }

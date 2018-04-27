@@ -10,12 +10,11 @@ import Foundation
 /// SlackAPIとのやりとりを行うクラスです。
 class SlackApiManager {
     
-    private let api_token = "xoxp-349791514183-348715893491-350251554245-2f27068875d2515f86f09d3406f6851e"
     /// クラスのインスタンス
     static let sharedInstance = SlackApiManager()
-    
+        
     func getUsers() -> [SlackUserData]? {
-        let url = URL(string: "https://slack.com/api/users.list?token=\(self.api_token)")
+        let url = URL(string: "https://slack.com/api/users.list?token=")
         var request = URLRequest(url: url!)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"

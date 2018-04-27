@@ -12,7 +12,29 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-        
+    
+    ///環境変数をSlack/.envファイルから取得します
+    private func getEnv() {
+        guard let path = Bundle.main.path(forResource: ".env", ofType: nil) else {
+            fatalError("Env File Not Found: '/Slack/.env'\nPlease create .env file reference from Slack/.env.sample")
+        }
+        let url = URL(fileURLWithPath: path)
+        do {
+            let data = try Data(contentsOf: url)
+            let str = String(data: data, encoding: .utf8) ?? "Empty File"
+            let clean = str.replacingOccurrences(of: "\"", with: "").replacingOccurrences(of: "'", with:"")
+            let envVars = clean.components(separatedBy: "\n")
+            for envVar in envVars {
+                let keyVal = envVar.components(separatedBy: "=")
+                if keyVal.count == 2 {
+                    setenv(keyVal[0], keyVal[1], 1)
+                }
+            }
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+            
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
@@ -25,6 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             LocationManager.requestAlwaysAuthorization()
             return true
         }
+        
+        //環境変数の取得
+        getEnv()
         
         //プッシュ通知許可
         UNUserNotificationCenter.current().delegate = self

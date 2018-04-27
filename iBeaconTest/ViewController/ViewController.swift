@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     
     private func getUsers() {
         isCompleteUsersConnection = false
-        let url = URL(string: "https://slack.com/api/users.list?token=\(SLACK_API_TOKEN)")
+        let env = ProcessInfo.processInfo.environment
+        let url = URL(string: "https://slack.com/api/users.list?token=\(env["SLACK_API_TOKEN"]!)")
         var request = URLRequest(url: url!)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
