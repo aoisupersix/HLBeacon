@@ -17,6 +17,8 @@
 		E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */; };
 		E19E6CCE2090A15C0042F878 /* SlackUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CCD2090A15C0042F878 /* SlackUserData.swift */; };
 		E19E6CD22092FA000042F878 /* .env in Resources */ = {isa = PBXBuildFile; fileRef = E19E6CD12092FA000042F878 /* .env */; };
+		E19E6CD4209306190042F878 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CD3209306190042F878 /* UserTableViewCell.swift */; };
+		E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CD6209308990042F878 /* AsyncImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
 		E19E6CCD2090A15C0042F878 /* SlackUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackUserData.swift; sourceTree = "<group>"; };
 		E19E6CD12092FA000042F878 /* .env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
+		E19E6CD3209306190042F878 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		E19E6CD6209308990042F878 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +90,8 @@
 		E195887B2082307F0085E034 /* iBeaconTest */ = {
 			isa = PBXGroup;
 			children = (
+				E19E6CD52093063E0042F878 /* Model */,
 				E19E6CD12092FA000042F878 /* .env */,
-				E19E6CCC2090A1350042F878 /* Slack */,
 				E19E6CC5209048DC0042F878 /* ViewController */,
 				E19E6CC4209048CA0042F878 /* View */,
 				E195887C2082307F0085E034 /* AppDelegate.swift */,
@@ -103,6 +107,8 @@
 		E19E6CC4209048CA0042F878 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E19E6CD3209306190042F878 /* UserTableViewCell.swift */,
+				E19E6CD6209308990042F878 /* AsyncImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,12 +122,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		E19E6CCC2090A1350042F878 /* Slack */ = {
+		E19E6CD52093063E0042F878 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E19E6CCD2090A15C0042F878 /* SlackUserData.swift */,
 			);
-			path = Slack;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,8 +230,10 @@
 			files = (
 				E195887F2082307F0085E034 /* ViewController.swift in Sources */,
 				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
+				E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,
 				E19588912082408D0085E034 /* LocationManager.swift in Sources */,
+				E19E6CD4209306190042F878 /* UserTableViewCell.swift in Sources */,
 				E19E6CCE2090A15C0042F878 /* SlackUserData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

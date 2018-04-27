@@ -65,16 +65,24 @@ class ViewController: UIViewController {
         uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateStatus), userInfo: nil, repeats: true)
     }
     
-    @IBAction func PerformTableViewTest(_ sender: Any) {
-        if isCompleteUsersConnection {
-            print(users)
-            self.performSegue(withIdentifier: "ShowUserNameInputView", sender: nil)
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //users.listを遷移先に受け渡し
+        if segue.identifier == "ShowUserNameInputView" {
+            let userNameViewController = segue.destination as! UserNameInputViewController
+            userNameViewController.slackUsers = sender as! [SlackUserData]
+        }
+    }
+    
+    @IBAction func PerformTableViewTest(_ sender: Any) {
+        if isCompleteUsersConnection {
+            print(users)
+            self.performSegue(withIdentifier: "ShowUserNameInputView", sender: users)
+        }
     }
     
     @objc func updateStatus() {
