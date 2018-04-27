@@ -34,6 +34,7 @@ class ViewController: UIViewController {
             }
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary
+                print(json)
                 for member in json["members"] as! NSArray {
                     let m = member as! NSDictionary
                     if (m["deleted"] as! Bool) == false {

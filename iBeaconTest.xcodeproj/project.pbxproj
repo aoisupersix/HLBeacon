@@ -138,7 +138,6 @@
 				E19588752082307F0085E034 /* Sources */,
 				E19588762082307F0085E034 /* Frameworks */,
 				E19588772082307F0085E034 /* Resources */,
-				2AC08EBCB8517FD175AB295C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -200,24 +199,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2AC08EBCB8517FD175AB295C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iBeaconTest/Pods-iBeaconTest-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iBeaconTest/Pods-iBeaconTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A3FAFE16E106FD986B71D6D8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,10 +379,7 @@
 				DEVELOPMENT_TEAM = VCXQC2Y5WS;
 				INFOPLIST_FILE = iBeaconTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.iBeaconTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -418,10 +396,7 @@
 				DEVELOPMENT_TEAM = VCXQC2Y5WS;
 				INFOPLIST_FILE = iBeaconTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.iBeaconTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
