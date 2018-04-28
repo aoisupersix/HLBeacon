@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     private var hLabUsers: [HLabUserData] = []
     private var slackUsers: [SlackUserData] = []
     private var isCompleteHLabConnection: Bool = true
@@ -92,11 +92,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        RealmUserDataManager().getData()
         getHLabUsers()
         getSlackUsers()
         updateStatus()
-        uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.updateStatus), userInfo: nil, repeats: true)
+        uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateStatus), userInfo: nil, repeats: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -136,7 +135,7 @@ class ViewController: UIViewController {
             statusLabel.text = "在室"
             statusLabel.textColor = UIColor.blue
         }else {
-            statusLabel.text = "外室"
+            statusLabel.text = "外出"
             statusLabel.textColor = UIColor.darkGray
         }
         

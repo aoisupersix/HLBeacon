@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9AC32B5A5E07F2D52C0235C9 /* Pods_iBeaconTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC168FBCB2ADDBDDCC7A444D /* Pods_iBeaconTest.framework */; };
 		E195887D2082307F0085E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887C2082307F0085E034 /* AppDelegate.swift */; };
-		E195887F2082307F0085E034 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887E2082307F0085E034 /* ViewController.swift */; };
+		E195887F2082307F0085E034 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887E2082307F0085E034 /* MainViewController.swift */; };
 		E19588822082307F0085E034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19588802082307F0085E034 /* Main.storyboard */; };
 		E1958884208230810085E034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1958883208230810085E034 /* Assets.xcassets */; };
 		E1958887208230810085E034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1958885208230810085E034 /* LaunchScreen.storyboard */; };
@@ -31,7 +31,7 @@
 		CB112D34B21AF7E10BEB07ED /* Pods-iBeaconTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iBeaconTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-iBeaconTest/Pods-iBeaconTest.release.xcconfig"; sourceTree = "<group>"; };
 		E19588792082307F0085E034 /* iBeaconTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E195887C2082307F0085E034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E195887E2082307F0085E034 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E195887E2082307F0085E034 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E19588812082307F0085E034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1958883208230810085E034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1958886208230810085E034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		E19E6CC5209048DC0042F878 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E195887E2082307F0085E034 /* ViewController.swift */,
+				E195887E2082307F0085E034 /* MainViewController.swift */,
 				E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */,
 				E19E6CD8209449F30042F878 /* IdentifierInputViewController.swift */,
 			);
@@ -270,7 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19E6CE0209469C60042F878 /* RealmUserDataManager.swift in Sources */,
-				E195887F2082307F0085E034 /* ViewController.swift in Sources */,
+				E195887F2082307F0085E034 /* MainViewController.swift in Sources */,
 				E19E6CD9209449F30042F878 /* IdentifierInputViewController.swift in Sources */,
 				E19E6CDB20944F010042F878 /* HLabUserData.swift in Sources */,
 				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
