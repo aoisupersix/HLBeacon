@@ -22,6 +22,7 @@ class UserNameInputViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
 }
 
 extension UserNameInputViewController: UITableViewDelegate, UITableViewDataSource {
@@ -36,10 +37,31 @@ extension UserNameInputViewController: UITableViewDelegate, UITableViewDataSourc
         return slackUsers.count
     }
     
-    //tableView各セルの生成
+    ///tableView各セルの生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserTableViewCell
         cell.setCell(userData: slackUsers[indexPath.row])
         return cell
+    }
+    
+    ///セルが選択された際の処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //選択されたセルのユーザ情報を取得
+        let selectedCell = tableView.cellForRow(at: indexPath) as! UserTableViewCell
+        let userName = selectedCell.userNameLabel.text
+        let selectedUser = slackUsers.filter({ $0.name == userName}).first
+        
+        //登録
+        RealmUserDataManager().setData(slackId: selectedUser?.id)
+        
+        let alert = UIAlertController(title: "設定完了", message: "ステータスを変更するアカウントを\(userName!)に設定しました。", preferredStyle: UIAlertControllerStyle.alert)
+        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: {
+            [presentedViewController] () -> Void in
+            presentedViewController?.viewWillAppear(true)
+        })
     }
 }

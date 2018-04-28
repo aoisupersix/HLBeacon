@@ -23,7 +23,7 @@ class RealmUserDataManager {
             //データ作成
             let dummy = RealmUserData()
             dummy.slackUserId = "-1"
-            dummy.hId = -1
+            dummy.hId = "-1"
             dummy.hIdentifier = "null"
             addData(data: dummy)
             return dummy
@@ -36,28 +36,25 @@ class RealmUserDataManager {
     /// - parameter slackId: SlackのユーザID
     /// - parameter hId: HLabManagerのID(番地)
     /// - parameter hIdentifier: HLabMangerの識別子
-    func setData(slackId: String? = nil, hId: Int? = nil, hIdentifier: String? = nil) {
+    func setData(slackId: String? = nil, hId: String? = nil, hIdentifier: String? = nil) {
         if slackId == nil && hId == nil && hIdentifier == nil {
             return
         }
         //データを取得して書き換え
         let data = getData()
-        if slackId != nil {
-            data.slackUserId = slackId!
-        }
-        if hId != nil {
-            data.hId = hId!
-        }
-        if hIdentifier != nil {
-            data.hIdentifier = hIdentifier!
-        }
         //削除
         let realm = try! Realm()
         try! realm.write() {
-            realm.deleteAll()
+            if slackId != nil {
+                data.slackUserId = slackId!
+            }
+            if hId != nil {
+                data.hId = hId!
+            }
+            if hIdentifier != nil {
+                data.hIdentifier = hIdentifier!
+            }
         }
-        //追加
-        addData(data: data)
     }
     
     /// ユーザ情報データをRealmに追加します。

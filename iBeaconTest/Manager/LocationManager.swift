@@ -88,7 +88,7 @@ extension LocationManager: CLLocationManagerDelegate {
                 print("Inside Region")
                 LocationManager.isEnterRegion = true
                 sendEnterNotify(title: "Inside Region")
-                manager.startRangingBeacons(in: LocationManager.beaconRegion)
+                //manager.startRangingBeacons(in: LocationManager.beaconRegion)
             }
             break
         case CLRegionState.outside:
@@ -117,11 +117,43 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     private func sendExitNotify(title: String) {
+        sendStatus(status: 0)
         sendNotification(title: title, body: "家を出ました。")
     }
     
     private func sendEnterNotify(title: String) {
+        sendStatus(status: 1)
         sendNotification(title: title, body: "家に帰ってきました。")
+    }
+    
+    private func sendStatus(status: Int) {
+        let userData = RealmUserDataManager().getData()
+        if userData.slackUserId == "-1" || userData.hId == "-1" {
+            //ユーザ情報不足
+            return
+        }
+        let url = URL(string: "https://script.google.com/macros/s/AKfycbwtEGgAOQ6LA3rcvsLcQFrrg8uVE1v5lkg8eNn40YjwAASTwmc/exec")
+        var request = URLRequest(url: url!)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let params: [[String: String]] = [[
+            "id": userData.hId,
+            "status": status.description
+            ]]
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            
+            URLSession.shared.dataTask(with: request) { data, response, err in
+                if err != nil {
+                    print("SLACK-USERS-GET: Failed")
+                    return;
+                }
+                print("SLACK-USERS-GET: Success")
+                print(data!)
+                }.resume()
+        }catch{
+            fatalError(error.localizedDescription)
+        }
     }
     
     private func sendNotification(title: String, body: String) {

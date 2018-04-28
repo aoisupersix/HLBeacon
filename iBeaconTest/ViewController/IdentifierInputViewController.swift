@@ -34,10 +34,31 @@ extension IdentifierInputViewController: UITableViewDelegate, UITableViewDataSou
         return hLabUsers.count
     }
     
-    //tableView各セルの生成
+    ///tableView各セルの生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
         cell.textLabel?.text = hLabUsers[indexPath.row].name
         return cell
+    }
+    
+    ///セルが選択された際の処理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //選択されたセルのユーザ情報を取得
+        let selectedCell = tableView.cellForRow(at: indexPath)
+        let userName = selectedCell?.textLabel?.text
+        let selectedUser = hLabUsers.filter({ $0.name == userName}).first
+        
+        //登録
+        RealmUserDataManager().setData(slackId: nil, hId: selectedUser?.id, hIdentifier: selectedUser?.name)
+    
+        let alert = UIAlertController(title: "設定完了", message: "あなたのユーザ識別子を\(userName!)に設定しました。", preferredStyle: UIAlertControllerStyle.alert)
+        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: {
+            [presentedViewController] () -> Void in
+            presentedViewController?.viewWillAppear(true)
+        })
     }
 }

@@ -98,6 +98,10 @@ class MainViewController: UIViewController {
         uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateStatus), userInfo: nil, repeats: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        //Viewの再描画 TODO
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
