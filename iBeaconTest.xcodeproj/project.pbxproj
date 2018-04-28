@@ -21,6 +21,8 @@
 		E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CD6209308990042F878 /* AsyncImageView.swift */; };
 		E19E6CD9209449F30042F878 /* IdentifierInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CD8209449F30042F878 /* IdentifierInputViewController.swift */; };
 		E19E6CDB20944F010042F878 /* HLabUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CDA20944F010042F878 /* HLabUserData.swift */; };
+		E19E6CDD209468930042F878 /* RealmUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CDC209468930042F878 /* RealmUserData.swift */; };
+		E19E6CE0209469C60042F878 /* RealmUserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CDF209469C60042F878 /* RealmUserDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		E19E6CD6209308990042F878 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		E19E6CD8209449F30042F878 /* IdentifierInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierInputViewController.swift; sourceTree = "<group>"; };
 		E19E6CDA20944F010042F878 /* HLabUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLabUserData.swift; sourceTree = "<group>"; };
+		E19E6CDC209468930042F878 /* RealmUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserData.swift; sourceTree = "<group>"; };
+		E19E6CDF209469C60042F878 /* RealmUserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUserDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 		E195887B2082307F0085E034 /* iBeaconTest */ = {
 			isa = PBXGroup;
 			children = (
+				E19E6CDE209469A80042F878 /* Manager */,
 				E19E6CD52093063E0042F878 /* Model */,
 				E19E6CD12092FA000042F878 /* .env */,
 				E19E6CC5209048DC0042F878 /* ViewController */,
@@ -103,7 +108,6 @@
 				E1958883208230810085E034 /* Assets.xcassets */,
 				E1958885208230810085E034 /* LaunchScreen.storyboard */,
 				E1958888208230810085E034 /* Info.plist */,
-				E19588902082408D0085E034 /* LocationManager.swift */,
 			);
 			path = iBeaconTest;
 			sourceTree = "<group>";
@@ -132,8 +136,18 @@
 			children = (
 				E19E6CCD2090A15C0042F878 /* SlackUserData.swift */,
 				E19E6CDA20944F010042F878 /* HLabUserData.swift */,
+				E19E6CDC209468930042F878 /* RealmUserData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E19E6CDE209469A80042F878 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				E19588902082408D0085E034 /* LocationManager.swift */,
+				E19E6CDF209469C60042F878 /* RealmUserDataManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +161,7 @@
 				E19588752082307F0085E034 /* Sources */,
 				E19588762082307F0085E034 /* Frameworks */,
 				E19588772082307F0085E034 /* Resources */,
+				F46998E45C06AA60B18F8CA0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -227,6 +242,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F46998E45C06AA60B18F8CA0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iBeaconTest/Pods-iBeaconTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iBeaconTest/Pods-iBeaconTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -234,10 +269,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E19E6CE0209469C60042F878 /* RealmUserDataManager.swift in Sources */,
 				E195887F2082307F0085E034 /* ViewController.swift in Sources */,
 				E19E6CD9209449F30042F878 /* IdentifierInputViewController.swift in Sources */,
 				E19E6CDB20944F010042F878 /* HLabUserData.swift in Sources */,
 				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
+				E19E6CDD209468930042F878 /* RealmUserData.swift in Sources */,
 				E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,
 				E19588912082408D0085E034 /* LocationManager.swift in Sources */,

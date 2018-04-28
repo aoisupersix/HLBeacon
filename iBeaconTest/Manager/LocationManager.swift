@@ -8,6 +8,7 @@
 import CoreLocation
 import UserNotifications
 
+///位置情報関連の処理を行うクラス
 class LocationManager: CLLocationManager {
     
     static let BEACON_UUID = UUID(uuidString: "2F0B0D9B-B52C-47BF-B5B8-2BFBCE094653")!
