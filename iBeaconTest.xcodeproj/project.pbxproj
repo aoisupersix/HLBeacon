@@ -19,6 +19,8 @@
 		E19E6CD22092FA000042F878 /* .env in Resources */ = {isa = PBXBuildFile; fileRef = E19E6CD12092FA000042F878 /* .env */; };
 		E19E6CD4209306190042F878 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CD3209306190042F878 /* UserTableViewCell.swift */; };
 		E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CD6209308990042F878 /* AsyncImageView.swift */; };
+		E19E6CD9209449F30042F878 /* IdentifierInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CD8209449F30042F878 /* IdentifierInputViewController.swift */; };
+		E19E6CDB20944F010042F878 /* HLabUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CDA20944F010042F878 /* HLabUserData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		E19E6CD12092FA000042F878 /* .env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
 		E19E6CD3209306190042F878 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		E19E6CD6209308990042F878 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		E19E6CD8209449F30042F878 /* IdentifierInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierInputViewController.swift; sourceTree = "<group>"; };
+		E19E6CDA20944F010042F878 /* HLabUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLabUserData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 			children = (
 				E195887E2082307F0085E034 /* ViewController.swift */,
 				E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */,
+				E19E6CD8209449F30042F878 /* IdentifierInputViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				E19E6CCD2090A15C0042F878 /* SlackUserData.swift */,
+				E19E6CDA20944F010042F878 /* HLabUserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,6 +235,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E195887F2082307F0085E034 /* ViewController.swift in Sources */,
+				E19E6CD9209449F30042F878 /* IdentifierInputViewController.swift in Sources */,
+				E19E6CDB20944F010042F878 /* HLabUserData.swift in Sources */,
 				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
 				E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,
