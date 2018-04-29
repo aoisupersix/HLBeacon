@@ -17,7 +17,7 @@ class RealmUserDataManager {
     /// - returns: 取得したユーザ情報
     func getData() -> RealmUserData {
         let realm = try! Realm()
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        //print(Realm.Configuration.defaultConfiguration.fileURL!)
         let data = realm.objects(RealmUserData.self)
         if data.count == 0 {
             //データ作成

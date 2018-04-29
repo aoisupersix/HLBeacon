@@ -132,7 +132,7 @@ extension LocationManager: CLLocationManagerDelegate {
             //ユーザ情報不足
             return
         }
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbwtEGgAOQ6LA3rcvsLcQFrrg8uVE1v5lkg8eNn40YjwAASTwmc/exec")
+        let url = URL(string: "https://script.google.com/macros/s/AKfycbwsB4Tvdfk50byMeg2Yghp4lkyqaxgWsdH2pI1KkP81eLAYfwQ/exec")
         var request = URLRequest(url: url!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
