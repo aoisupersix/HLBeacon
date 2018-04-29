@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651ADA778CE661183194DC52 /* Pods_HLBeacon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0872505F52595BD609F474E /* Pods_HLBeacon.framework */; };
 		E195887D2082307F0085E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887C2082307F0085E034 /* AppDelegate.swift */; };
 		E195887F2082307F0085E034 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887E2082307F0085E034 /* MainViewController.swift */; };
 		E19588822082307F0085E034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19588802082307F0085E034 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		882F6312414AB7F08C8D0A68 /* Pods-HLBeacon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.debug.xcconfig"; sourceTree = "<group>"; };
 		9CE89699F289FEECF120C7E0 /* Pods-HLBeacon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.release.xcconfig"; sourceTree = "<group>"; };
+		D0872505F52595BD609F474E /* Pods_HLBeacon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HLBeacon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19588792082307F0085E034 /* HLBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HLBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E195887C2082307F0085E034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E195887E2082307F0085E034 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651ADA778CE661183194DC52 /* Pods_HLBeacon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +63,7 @@
 		582DCA45975555488DF2422D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0872505F52595BD609F474E /* Pods_HLBeacon.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,9 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				E19E6CE1209541490042F878 /* Info.plist */,
+				E19E6CD12092FA000042F878 /* .env */,
 				E19E6CDE209469A80042F878 /* Manager */,
 				E19E6CD52093063E0042F878 /* Model */,
-				E19E6CD12092FA000042F878 /* .env */,
 				E19E6CC5209048DC0042F878 /* ViewController */,
 				E19E6CC4209048CA0042F878 /* View */,
 				E195887C2082307F0085E034 /* AppDelegate.swift */,

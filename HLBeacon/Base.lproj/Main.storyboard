@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -31,32 +30,32 @@
         <!--HL-BeaconPeripheral-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="iBeaconTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="HL-BeaconPeripheral" id="BYZ-38-t0r" customClass="MainViewController" customModule="HLBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在の状態:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sb8-ZP-zgS">
-                                <rect key="frame" x="118" y="144" width="139" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在の端末状態:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sb8-ZP-zgS">
+                                <rect key="frame" x="92" y="104" width="191.5" height="31.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Tp-Zb-74k" userLabel="statusLabel">
-                                <rect key="frame" x="11" y="184" width="353" height="93"/>
+                                <rect key="frame" x="18" y="143.5" width="339" height="93.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="statusLabel"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="78"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="78"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSSI: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1C-VM-T2A">
-                                <rect key="frame" x="143" y="285" width="88" height="31"/>
+                                <rect key="frame" x="143.5" y="244" width="87.5" height="30.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID: 2F0B0D9B-B52C-47BF-B5B8-2BFBCE094653" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpA-Rb-1Uj">
-                                <rect key="frame" x="44" y="324" width="288" height="14"/>
+                                <rect key="frame" x="44.5" y="282.5" width="287.5" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -78,59 +77,80 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major: 1 Minor: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe2-NX-ybX">
-                                <rect key="frame" x="141" y="346" width="92" height="14"/>
+                                <rect key="frame" x="141.5" y="304.5" width="91.5" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnv-Su-i4J">
-                                <rect key="frame" x="54" y="438" width="98" height="80"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="49"/>
-                                <state key="normal" title="外出">
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atO-BD-PjQ">
-                                <rect key="frame" x="223" y="438" width="98" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="vsX-4s-3M5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="49"/>
-                                <state key="normal" title="在室">
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="N6t-jQ-ntw">
+                                <rect key="frame" x="69" y="458" width="237" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnv-Su-i4J">
+                                        <rect key="frame" x="0.0" y="0.0" width="98" height="70"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="49"/>
+                                        <state key="normal" title="外出">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="setStatusToOutRoom:" destination="BYZ-38-t0r" eventType="touchDown" id="eLc-gw-KMy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atO-BD-PjQ">
+                                        <rect key="frame" x="139" y="0.0" width="98" height="70"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="49"/>
+                                        <state key="normal" title="在室">
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="setStatusToInRoom:" destination="BYZ-38-t0r" eventType="touchDown" id="34Y-sx-32d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SlackName: Undefined" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0N-nl-fl8">
+                                <rect key="frame" x="96" y="333" width="183" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HLabIdentifier: Undefined" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQQ-PH-GAi">
+                                <rect key="frame" x="84" y="361" width="207" height="20.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kpA-Rb-1Uj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0I6-Dg-vfK"/>
-                            <constraint firstItem="Fe1-mc-5oN" firstAttribute="top" secondItem="nLz-3q-i3P" secondAttribute="bottom" constant="12" id="0wN-po-EyY"/>
-                            <constraint firstItem="Pe2-NX-ybX" firstAttribute="top" secondItem="kpA-Rb-1Uj" secondAttribute="bottom" constant="8" id="3XA-aN-ofJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sb8-ZP-zgS" secondAttribute="trailing" constant="118" id="8jI-3E-AqF"/>
-                            <constraint firstItem="Pe2-NX-ybX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AgF-2S-ACL"/>
-                            <constraint firstItem="Sb8-ZP-zgS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="118" id="FrL-cd-bn1"/>
-                            <constraint firstItem="6Tp-Zb-74k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H0R-ey-kLv"/>
-                            <constraint firstItem="J1C-VM-T2A" firstAttribute="top" secondItem="6Tp-Zb-74k" secondAttribute="bottom" constant="8" id="HVr-2S-lBn"/>
-                            <constraint firstItem="Sb8-ZP-zgS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="I4I-ws-Q2s"/>
-                            <constraint firstItem="atO-BD-PjQ" firstAttribute="top" secondItem="bnv-Su-i4J" secondAttribute="top" id="K7m-pY-ZfZ"/>
-                            <constraint firstItem="Fe1-mc-5oN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ky7-LA-vYo"/>
-                            <constraint firstItem="atO-BD-PjQ" firstAttribute="baseline" secondItem="bnv-Su-i4J" secondAttribute="firstBaseline" id="Las-js-Poy"/>
-                            <constraint firstItem="nLz-3q-i3P" firstAttribute="top" secondItem="atO-BD-PjQ" secondAttribute="bottom" constant="25" id="NSu-Je-nvf"/>
-                            <constraint firstItem="bnv-Su-i4J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="O3o-gl-yST"/>
-                            <constraint firstItem="J1C-VM-T2A" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RL9-vO-rWa"/>
-                            <constraint firstItem="6Tp-Zb-74k" firstAttribute="top" secondItem="Sb8-ZP-zgS" secondAttribute="bottom" constant="8" id="YK8-ux-crM"/>
-                            <constraint firstItem="atO-BD-PjQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="dPy-SL-G2Q"/>
-                            <constraint firstItem="nLz-3q-i3P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dbO-j7-OCS"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bnv-Su-i4J" secondAttribute="trailing" constant="20" symbolic="YES" id="dg6-5f-t8z"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="atO-BD-PjQ" secondAttribute="trailing" constant="54" id="hAm-ye-ewu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Fe1-mc-5oN" secondAttribute="bottom" constant="46" id="iYA-zU-sBM"/>
-                            <constraint firstItem="kpA-Rb-1Uj" firstAttribute="top" secondItem="J1C-VM-T2A" secondAttribute="bottom" constant="8" id="o53-yy-IbT"/>
+                            <constraint firstItem="A0N-nl-fl8" firstAttribute="top" secondItem="Pe2-NX-ybX" secondAttribute="bottom" constant="14.5" id="44S-PF-5wN"/>
+                            <constraint firstItem="Fe1-mc-5oN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8oD-7d-EGT"/>
+                            <constraint firstItem="6Tp-Zb-74k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="93J-6M-moP"/>
+                            <constraint firstItem="Fe1-mc-5oN" firstAttribute="top" secondItem="nLz-3q-i3P" secondAttribute="bottom" constant="12" id="A6O-3P-uuC"/>
+                            <constraint firstItem="gQQ-PH-GAi" firstAttribute="top" secondItem="A0N-nl-fl8" secondAttribute="bottom" constant="7.5" id="BF4-pU-LyG"/>
+                            <constraint firstItem="Pe2-NX-ybX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CC7-b7-5ZP"/>
+                            <constraint firstItem="J1C-VM-T2A" firstAttribute="top" secondItem="6Tp-Zb-74k" secondAttribute="bottom" constant="7" id="IVx-Yr-gkW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6Tp-Zb-74k" secondAttribute="trailing" constant="18" id="QJD-6T-yDm"/>
+                            <constraint firstItem="J1C-VM-T2A" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qbp-Sc-sND"/>
+                            <constraint firstItem="kpA-Rb-1Uj" firstAttribute="top" secondItem="J1C-VM-T2A" secondAttribute="bottom" constant="8" id="R98-mj-kRj"/>
+                            <constraint firstItem="A0N-nl-fl8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rqv-ie-m17"/>
+                            <constraint firstItem="kpA-Rb-1Uj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W31-Q0-gTT"/>
+                            <constraint firstItem="nLz-3q-i3P" firstAttribute="top" secondItem="N6t-jQ-ntw" secondAttribute="bottom" constant="15" id="X2u-uD-TEp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Fe1-mc-5oN" secondAttribute="bottom" constant="46" id="ebq-7z-qYa"/>
+                            <constraint firstItem="gQQ-PH-GAi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fob-An-0dO"/>
+                            <constraint firstItem="6Tp-Zb-74k" firstAttribute="top" secondItem="Sb8-ZP-zgS" secondAttribute="bottom" constant="8" id="hZv-hE-89e"/>
+                            <constraint firstItem="nLz-3q-i3P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jt7-5N-iG9"/>
+                            <constraint firstItem="Pe2-NX-ybX" firstAttribute="top" secondItem="kpA-Rb-1Uj" secondAttribute="bottom" constant="8" id="lNt-Yd-4eh"/>
+                            <constraint firstItem="N6t-jQ-ntw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nbP-dK-LlP"/>
+                            <constraint firstItem="Sb8-ZP-zgS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="r0k-bE-Gyu"/>
+                            <constraint firstItem="Sb8-ZP-zgS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vZS-5m-VEz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="HL-BeaconPeripheral" id="bMr-yb-tRZ"/>
                     <connections>
+                        <outlet property="hLabIdentifierLabel" destination="gQQ-PH-GAi" id="iEM-uo-Ff1"/>
                         <outlet property="rssiLabel" destination="J1C-VM-T2A" id="csC-Km-eao"/>
+                        <outlet property="slackIdLabel" destination="A0N-nl-fl8" id="EL8-Cy-RbF"/>
                         <outlet property="statusLabel" destination="6Tp-Zb-74k" id="sxE-lN-amJ"/>
                         <segue destination="97m-lZ-0Y2" kind="presentation" identifier="ShowUserNameInputView" modalPresentationStyle="fullScreen" id="zSb-Cl-75O"/>
                         <segue destination="Quu-6I-xlh" kind="presentation" identifier="ShowIdentifierInputView" modalPresentationStyle="fullScreen" id="DPc-aT-ZNM"/>
@@ -143,7 +163,7 @@
         <!--User Name Input View Controller-->
         <scene sceneID="oxP-6e-wdg">
             <objects>
-                <viewController id="97m-lZ-0Y2" customClass="UserNameInputViewController" customModule="iBeaconTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="97m-lZ-0Y2" customClass="UserNameInputViewController" customModule="HLBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sm1-1b-3Re">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -152,14 +172,14 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="userCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userCell" rowHeight="113" id="utP-4h-j1v" customClass="UserTableViewCell" customModule="iBeaconTest" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="userCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userCell" rowHeight="113" id="utP-4h-j1v" customClass="UserTableViewCell" customModule="HLBeacon" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="utP-4h-j1v" id="T9Z-M4-tIC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tSl-hF-ul8" customClass="AsyncImageView" customModule="iBeaconTest" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tSl-hF-ul8" customClass="AsyncImageView" customModule="HLBeacon" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="16" width="81" height="81"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="81" id="43G-bL-JY8"/>
@@ -245,7 +265,7 @@
         <!--Identifier Input View Controller-->
         <scene sceneID="N25-Rp-3Z7">
             <objects>
-                <viewController storyboardIdentifier="IdentifierInputViewController" title="Identifier Input View Controller" id="Quu-6I-xlh" customClass="IdentifierInputViewController" customModule="iBeaconTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdentifierInputViewController" title="Identifier Input View Controller" id="Quu-6I-xlh" customClass="IdentifierInputViewController" customModule="HLBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pTm-kH-BoP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
