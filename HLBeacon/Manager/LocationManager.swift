@@ -17,7 +17,7 @@ class LocationManager: CLLocationManager {
     static let BEACON_IDENTIFIER = "tokyo.aoisupersix.beacon"
     
     /// 学内ジオフェンスの中心緯度経度
-    static let GEOFENCE_COORDINATE = CLLocationCoordinate2DMake(1, 1)
+    static let GEOFENCE_COORDINATE = CLLocationCoordinate2DMake(35.817237, 139.424543)
     /// 学内ジオフェンスの識別子
     static let GEOFENCE_IDENTIFIER = "tokyo.aoisupersix.campus"
 
