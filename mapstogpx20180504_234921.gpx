@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="mapstogpx.com" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+  <metadata>
+    <link href="http://www.mapstogpx.com">
+      <text>Sverrir Sigmundarson</text>
+    </link>
+    <!--desc>Map data ©2018 Google, ZENRIN</desc-->
+    <!--copyright author="Google Inc">
+    	<year>2018</year>
+    	<license>https://developers.google.com/maps/terms</license>
+    </copyright-->
+    <!--url>https://www.google.co.uk/maps/dir/35.8172067,139.4246029/35.8175836,139.4189949/@35.8162131,139.4196871,17z/data=!3m1!4b1!4m2!4m1!3e2?hl=ja&hl=en</url-->
+    <time>2018-05-05T08:49:19Z</time>
+  </metadata>
+  <name>Tokorozawa-shi to Japan</name>
+  <number>1</number>
+  <wpt lat="35.8172062" lon="139.4246087">
+    <name>TP001</name>
+  </wpt>
+  <wpt lat="35.81748" lon="139.42464">
+    <name>TP002</name>
+  </wpt>
+  <wpt lat="35.8174816" lon="139.4246431">
+    <name>TP003</name>
+  </wpt>
+  <wpt lat="35.8175" lon="139.42434">
+    <name>TP004</name>
+  </wpt>
+  <wpt lat="35.81752" lon="139.4242">
+    <name>TP005</name>
+  </wpt>
+  <wpt lat="35.81751" lon="139.42401">
+    <name>TP006</name>
+  </wpt>
+  <wpt lat="35.81749" lon="139.42382">
+    <name>TP007</name>
+  </wpt>
+  <wpt lat="35.81745" lon="139.42351">
+    <name>TP008</name>
+  </wpt>
+  <wpt lat="35.81744" lon="139.42318">
+    <name>TP009</name>
+  </wpt>
+  <wpt lat="35.81748" lon="139.42288">
+    <name>TP010</name>
+  </wpt>
+  <wpt lat="35.81747" lon="139.42285">
+    <name>TP011</name>
+  </wpt>
+  <wpt lat="35.81745" lon="139.42285">
+    <name>TP012</name>
+  </wpt>
+  <wpt lat="35.81645" lon="139.42265">
+    <name>TP013</name>
+  </wpt>
+  <wpt lat="35.8164" lon="139.42264">
+    <name>TP014</name>
+  </wpt>
+  <wpt lat="35.81635" lon="139.42262">
+    <name>TP015</name>
+  </wpt>
+  <wpt lat="35.81631" lon="139.42259">
+    <name>TP016</name>
+  </wpt>
+  <wpt lat="35.81626" lon="139.42256">
+    <name>TP017</name>
+  </wpt>
+  <wpt lat="35.81616" lon="139.42247">
+    <name>TP018</name>
+  </wpt>
+  <wpt lat="35.81557" lon="139.42186">
+    <name>TP019</name>
+  </wpt>
+  <wpt lat="35.81552" lon="139.42177">
+    <name>TP020</name>
+  </wpt>
+  <wpt lat="35.8155191" lon="139.4217685">
+    <name>TP021</name>
+  </wpt>
+  <wpt lat="35.81602" lon="139.42106">
+    <name>TP022</name>
+  </wpt>
+  <wpt lat="35.81666" lon="139.42022">
+    <name>TP023</name>
+  </wpt>
+  <wpt lat="35.81732" lon="139.41942">
+    <name>TP024</name>
+  </wpt>
+  <wpt lat="35.81745" lon="139.41927">
+    <name>TP025</name>
+  </wpt>
+  <wpt lat="35.81763" lon="139.41905">
+    <name>TP026</name>
+  </wpt>
+  <wpt lat="35.81763" lon="139.4190524">
+    <name>TP027</name>
+  </wpt>
+</gpx>

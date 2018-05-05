@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     ///HLabManagerAPIを叩いてhLabManagerユーザリストを取得します
     private func getHLabUsers() {
         isCompleteHLabConnection = false
-        let url = URL(string: "https://script.googleusercontent.com/macros/echo?user_content_key=rrlqoifaw6wnBHDvTphrzrQTjlZ1QmYbN5euGjVS4kt7_yKyk50tvGsMHlzNMl3P3GW7fxvgS6Q7j3vaPpAr_8VOGQyCEl1sm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGtba5h_oNo_mLurQwQbbobec1v2FBD7Hi7WCg_TlcF1gKnEuSTQNV5mEkcqB5gYGfKfVnhjI6Uu&lib=M8JeHX3alXjbr-RdiLpIlEtosWOnhTSuU")
+        let url = URL(string: "https://script.googleusercontent.com/macros/echo?user_content_key=m4Gwgg9W_7kjuOn8NmuWIqIiPeGeY6Rw6ke23i7O5zIassxwr5pvP2HR4LvNmJTLl8sc3qoFaF5iHU_YV6pvwmPxGQwNCPp9m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnC7KzRAiUJKJsxOht5H96T6k7rwNRtxGwVrHKo0vZt2a-aICPhaGXBXRGDC86Rjg9kqhI51p3q1_&amp;lib=MjdNaf7H1FgzgxVIaR9gEUj8SyHr1OfNd")
         var request = URLRequest(url: url!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "GET"
@@ -39,7 +39,9 @@ class MainViewController: UIViewController {
             do {
                 let json = try JSONSerialization.jsonObject(with: data!, options: [])
                 print(json)
-                for member in json as! NSArray {
+                let j = json as! NSDictionary
+                let members = j["member"] as! NSArray
+                for member in members {
                     let m = member as! NSDictionary
                     let id = m["id"] as! Int64
                     let name = m["name"] as! String
@@ -101,13 +103,14 @@ class MainViewController: UIViewController {
             //ユーザ情報不足
             return
         }
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbwsB4Tvdfk50byMeg2Yghp4lkyqaxgWsdH2pI1KkP81eLAYfwQ/exec")
+        let url = URL(string: "https://script.google.com/macros/s/AKfycbwtEGgAOQ6LA3rcvsLcQFrrg8uVE1v5lkg8eNn40YjwAASTwmc/exec")
         var request = URLRequest(url: url!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         let params: [[String: String]] = [[
             "id": userData.hId,
-            "status": status.description
+            "status": status.description,
+            "slackId": userData.slackUserId
             ]]
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
@@ -198,7 +201,7 @@ class MainViewController: UIViewController {
     
     ///UIのラベルを更新します
     @objc func updateStatus() {
-        if LocationManager.isEnterRegion {
+        if LocationManager.isEnterBeaconRegion {
             statusLabel.text = "在室"
             statusLabel.textColor = UIColor.blue
         }else {

@@ -1,6 +1,6 @@
 //
 //  LocationManager.swift
-//  iBeaconTest
+//  HLBeacon
 //
 //  Created by aoisupersix on 2018/04/14.
 //
@@ -8,18 +8,35 @@
 import CoreLocation
 import UserNotifications
 
-///位置情報関連の処理を行うクラス
+/// 位置情報関連の処理を行うクラス
 class LocationManager: CLLocationManager {
     
+    /// 研究室ビーコン発信機のUUID
     static let BEACON_UUID = UUID(uuidString: "2F0B0D9B-B52C-47BF-B5B8-2BFBCE094653")!
-    static let BEACON_IDENTIFIER = "tokyo.aoisupersix"
+    /// 研究室のビーコン識別子
+    static let BEACON_IDENTIFIER = "tokyo.aoisupersix.beacon"
+    
+    /// 学内ジオフェンスの中心緯度経度
+    static let GEOFENCE_CORDINATE = CLLocationCoordinate2DMake(1, 1)
+    /// 学内ジオフェンスの識別子
+    static let GEOFENCE_IDENTIFIER = "tokyo.aoisupersix.myHome"
 
+    /// LocationManagerのインスタンス
     private static let sharedInstance = LocationManager()
     
+    /// 研究室のビーコン領域
     static let beaconRegion = CLBeaconRegion(proximityUUID: LocationManager.BEACON_UUID, major: CLBeaconMajorValue(1), minor: CLBeaconMinorValue(1), identifier: LocationManager.BEACON_IDENTIFIER)
-    static var isEnterRegion: Bool = false
+    /// 学内のジオフェンス領域
+    static let moniteringRegion = CLCircularRegion.init(center: CLLocationCoordinate2DMake(35.817241, 139.424535), radius: 100.0, identifier: LocationManager.GEOFENCE_IDENTIFIER)
+    
+    /// 研究室のビーコン領域に侵入しているかどうかを表すフラグ
+    static var isEnterBeaconRegion = false
+    /// 学内のジオフェンス領域に侵入しているかを表すフラグ
+    static var isEnterGeofenceRegion = false
+    /// 研究室ビーコン発信機からの信号受信強度
     static var rssi: Int?
     
+    /// ユーザに位置情報利用の許可を確認します
     static func requestAlwaysAuthorization() {
         //バックグランドでも位置情報更新をチェックする
         sharedInstance.allowsBackgroundLocationUpdates = true
@@ -28,7 +45,9 @@ class LocationManager: CLLocationManager {
     }
 }
 
+/// LocationManagerの通知関係の処理
 extension LocationManager: UNUserNotificationCenterDelegate {
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //フォアグラウンドでも通知を受け取る
         completionHandler([.alert, .sound])
@@ -36,109 +55,85 @@ extension LocationManager: UNUserNotificationCenterDelegate {
 }
 
 
+/// LocationManagerの位置情報関係の処理
 extension LocationManager: CLLocationManagerDelegate {
     
+    /// 位置情報の観測が開始された際の処理
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
-        print("Start monitoring for region")
+        print("Start monitoring for \(region.identifier)")
         manager.requestState(for: region)
     }
     
+    /// 位置情報利用の認証状態が変わった際の処理
+    /// 位置情報の観測を開始させます。
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
+            //iBeacon領域判定の有効化
             if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self){
                 LocationManager.beaconRegion.notifyEntryStateOnDisplay = false
                 LocationManager.beaconRegion.notifyOnEntry = true
                 LocationManager.beaconRegion.notifyOnExit = true
                 manager.startMonitoring(for: LocationManager.beaconRegion)
             }
+            //学内領域判定の有効化
+            if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+                manager.startMonitoring(for: LocationManager.moniteringRegion)
+            }
         }
     }
     
+    /// 領域に侵入した際の処理
+    /// 研究室ビーコン領域であれば状態を在室に更新し、学内領域であれば状態を学内に更新します。
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        if !LocationManager.isEnterRegion {
-            print("Enter Region")
-            LocationManager.isEnterRegion = true
-            sendEnterNotify(title: "Enter Region")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
-        for b in beacons {
-            if b.proximityUUID == LocationManager.BEACON_UUID {
-                LocationManager.rssi = b.rssi
-                print("RSSI:\(b.rssi),Proximity:\(b.proximity.rawValue)")
-                //受信対象のBeacon
-                if b.proximity == CLProximity.unknown && LocationManager.isEnterRegion {
-                    print("Far Exit Region")
-                    LocationManager.isEnterRegion = false
-                    sendExitNotify(title: "Exit Far Distance Region")
-                }else if !LocationManager.isEnterRegion {
-                    print("Enter Near Region")
-                    LocationManager.isEnterRegion = true
-                    sendEnterNotify(title: "Enter Near Region")
-                }
+        //研究室領域の判定
+        if region.identifier == LocationManager.BEACON_IDENTIFIER {
+            if !LocationManager.isEnterBeaconRegion {
+                //研究室領域に侵入
+                print("Enter Beacon Region")
+                LocationManager.isEnterBeaconRegion = true
+                sendNotification(title: "研究室領域に侵入", body: "ステータスを「在室」に更新しました。")
+            }
+        //学内領域の判定
+        } else if region.identifier == LocationManager.GEOFENCE_IDENTIFIER {
+            if !LocationManager.isEnterBeaconRegion && !LocationManager.isEnterGeofenceRegion {
+                //学内領域に侵入
+                print("Enter Geofence Region")
+                LocationManager.isEnterGeofenceRegion = false
+                sendNotification(title: "学内領域に侵入", body: "ステータスを「学内」に更新しました。")
             }
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
-        switch state {
-        case CLRegionState.inside:
-            if !LocationManager.isEnterRegion {
-                print("Inside Region")
-                LocationManager.isEnterRegion = true
-                sendEnterNotify(title: "Inside Region")
-                //manager.startRangingBeacons(in: LocationManager.beaconRegion)
-            }
-            break
-        case CLRegionState.outside:
-            if LocationManager.isEnterRegion {
-                print("Outside Region")
-                LocationManager.isEnterRegion = false
-                sendExitNotify(title: "Outside Region")
-            }
-            break
-        case .unknown:
-            if LocationManager.isEnterRegion {
-                print("unknown")
-                print("Unknown Region")
-                LocationManager.isEnterRegion = false
-                sendExitNotify(title: "Unknown Region")
-            }
-            break
-        }
-        requestState(for: region)
-    }
-    
+    /// 領域から離れた際の処理
+    /// 研究室ビーコン領域からの退出であれば状態を学内に更新し、学内領域からの退出であれば状態を帰宅に更新します。
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print("Exit Region")
-        LocationManager.isEnterRegion = false
-        sendExitNotify(title: "Exit Region")
+        //研究室領域の判定
+        if region.identifier == LocationManager.BEACON_IDENTIFIER {
+            print("Exit Beacon Region")
+            LocationManager.isEnterBeaconRegion = false
+            sendNotification(title: "研究室領域から退出", body: "ステータスを「学内」に更新しました。")
+        }else {
+            print("Exit GeoFence Region")
+            sendNotification(title: "学内領域から退出", body: "ステータスを「帰宅」に更新しました。")
+        }
     }
     
-    private func sendExitNotify(title: String) {
-        sendStatus(status: 0)
-        sendNotification(title: title, body: "家を出ました。")
-    }
-    
-    private func sendEnterNotify(title: String) {
-        sendStatus(status: 1)
-        sendNotification(title: title, body: "家に帰ってきました。")
-    }
-    
+    /// ステータス情報を在室管理サーバに投げます。
+    /// - parameter status: 更新するステータス値
     private func sendStatus(status: Int) {
         let userData = RealmUserDataManager().getData()
         if userData.slackUserId == "-1" || userData.hId == "-1" {
-            //ユーザ情報不足
+            //ユーザ情報不足のため送信不可
             return
         }
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbwsB4Tvdfk50byMeg2Yghp4lkyqaxgWsdH2pI1KkP81eLAYfwQ/exec")
+        let url = URL(string: "https://script.google.com/macros/s/AKfycbwtEGgAOQ6LA3rcvsLcQFrrg8uVE1v5lkg8eNn40YjwAASTwmc/exec")
         var request = URLRequest(url: url!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         let params: [[String: String]] = [[
             "id": userData.hId,
-            "status": status.description
+            "status": status.description,
+            "slackId": userData.slackUserId
             ]]
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
@@ -156,6 +151,9 @@ extension LocationManager: CLLocationManagerDelegate {
         }
     }
     
+    /// ユーザにプッシュ通知を送信します。
+    /// - parameter title: プッシュ通知のタイトル
+    /// - parameter body: プッシュ通知の本文
     private func sendNotification(title: String, body: String) {
         let content = UNMutableNotificationContent()
         content.title = title

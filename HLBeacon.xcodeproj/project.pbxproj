@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		651ADA778CE661183194DC52 /* Pods_HLBeacon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0872505F52595BD609F474E /* Pods_HLBeacon.framework */; };
+		E173739D209D29300032C0CA /* mapstogpx20180504_234921.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */; };
 		E195887D2082307F0085E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887C2082307F0085E034 /* AppDelegate.swift */; };
 		E195887F2082307F0085E034 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887E2082307F0085E034 /* MainViewController.swift */; };
 		E19588822082307F0085E034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19588802082307F0085E034 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		882F6312414AB7F08C8D0A68 /* Pods-HLBeacon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.debug.xcconfig"; sourceTree = "<group>"; };
 		9CE89699F289FEECF120C7E0 /* Pods-HLBeacon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.release.xcconfig"; sourceTree = "<group>"; };
 		D0872505F52595BD609F474E /* Pods_HLBeacon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HLBeacon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mapstogpx20180504_234921.gpx; sourceTree = "<group>"; };
 		E19588792082307F0085E034 /* HLBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HLBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E195887C2082307F0085E034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E195887E2082307F0085E034 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		E19588702082307F0085E034 = {
 			isa = PBXGroup;
 			children = (
+				E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */,
 				E195887B2082307F0085E034 /* HLBeacon */,
 				E195887A2082307F0085E034 /* Products */,
 				BC9A5D60E85D334CFD221EFD /* Pods */,
@@ -217,6 +220,7 @@
 				E1958887208230810085E034 /* LaunchScreen.storyboard in Resources */,
 				E1958884208230810085E034 /* Assets.xcassets in Resources */,
 				E19588822082307F0085E034 /* Main.storyboard in Resources */,
+				E173739D209D29300032C0CA /* mapstogpx20180504_234921.gpx in Resources */,
 				E19E6CD22092FA000042F878 /* .env in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
