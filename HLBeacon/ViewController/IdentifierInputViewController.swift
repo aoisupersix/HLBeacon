@@ -7,13 +7,20 @@
 
 import UIKit
 
+/// HLab-Manager識別子入力ビューのViewController
 class IdentifierInputViewController: UIViewController {
+    
+    /// IdentifierInputViewのテーブル
     @IBOutlet weak var tableView: UITableView!
+    
+    /// Hlabユーザ情報
     var hLabUsers: [HLabUserData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    /// 戻るボタン押下時にビューを遷移します
     @IBAction func BackView(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -23,6 +30,7 @@ class IdentifierInputViewController: UIViewController {
     }
 }
 
+/// IdentifierInputViewControllerのテーブル関係の処理
 extension IdentifierInputViewController: UITableViewDelegate, UITableViewDataSource {
     ///tableViewのセクション数
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,15 +58,8 @@ extension IdentifierInputViewController: UITableViewDelegate, UITableViewDataSou
         
         //登録
         RealmUserDataManager().setData(slackId: nil, hId: selectedUser?.id, hIdentifier: selectedUser?.name)
-    
-        let alert = UIAlertController(title: "設定完了", message: "あなたのユーザ識別子を\(userName!)に設定しました。", preferredStyle: UIAlertControllerStyle.alert)
-        let defaultAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
-            self.dismiss(animated: true, completion: nil)
-        })
-        alert.addAction(defaultAction)
-        present(alert, animated: true, completion: {
-            [presentedViewController] () -> Void in
-            presentedViewController?.viewWillAppear(true)
-        })
+        
+        //ビュー遷移
+        self.dismiss(animated: true, completion: nil)
     }
 }
