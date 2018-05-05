@@ -17,9 +17,9 @@ class LocationManager: CLLocationManager {
     static let BEACON_IDENTIFIER = "tokyo.aoisupersix.beacon"
     
     /// 学内ジオフェンスの中心緯度経度
-    static let GEOFENCE_CORDINATE = CLLocationCoordinate2DMake(1, 1)
+    static let GEOFENCE_COORDINATE = CLLocationCoordinate2DMake(1, 1)
     /// 学内ジオフェンスの識別子
-    static let GEOFENCE_IDENTIFIER = "tokyo.aoisupersix.myHome"
+    static let GEOFENCE_IDENTIFIER = "tokyo.aoisupersix.campus"
 
     /// LocationManagerのインスタンス
     private static let sharedInstance = LocationManager()
@@ -27,7 +27,7 @@ class LocationManager: CLLocationManager {
     /// 研究室のビーコン領域
     static let beaconRegion = CLBeaconRegion(proximityUUID: LocationManager.BEACON_UUID, major: CLBeaconMajorValue(1), minor: CLBeaconMinorValue(1), identifier: LocationManager.BEACON_IDENTIFIER)
     /// 学内のジオフェンス領域
-    static let moniteringRegion = CLCircularRegion.init(center: CLLocationCoordinate2DMake(35.817241, 139.424535), radius: 100.0, identifier: LocationManager.GEOFENCE_IDENTIFIER)
+    static let moniteringRegion = CLCircularRegion.init(center: LocationManager.GEOFENCE_COORDINATE, radius: 100.0, identifier: LocationManager.GEOFENCE_IDENTIFIER)
     
     /// 研究室のビーコン領域に侵入しているかどうかを表すフラグ
     static var isEnterBeaconRegion = false
@@ -91,6 +91,7 @@ extension LocationManager: CLLocationManagerDelegate {
                 //研究室領域に侵入
                 print("Enter Beacon Region")
                 LocationManager.isEnterBeaconRegion = true
+                sendStatus(status: PresenseStatus.PRESENSE)
                 sendNotification(title: "研究室領域に侵入", body: "ステータスを「在室」に更新しました。")
             }
         //学内領域の判定
@@ -99,6 +100,7 @@ extension LocationManager: CLLocationManagerDelegate {
                 //学内領域に侵入
                 print("Enter Geofence Region")
                 LocationManager.isEnterGeofenceRegion = false
+                sendStatus(status: PresenseStatus.IN_CAMPUS)
                 sendNotification(title: "学内領域に侵入", body: "ステータスを「学内」に更新しました。")
             }
         }
@@ -111,16 +113,19 @@ extension LocationManager: CLLocationManagerDelegate {
         if region.identifier == LocationManager.BEACON_IDENTIFIER {
             print("Exit Beacon Region")
             LocationManager.isEnterBeaconRegion = false
+            sendStatus(status: PresenseStatus.IN_CAMPUS)
             sendNotification(title: "研究室領域から退出", body: "ステータスを「学内」に更新しました。")
         }else {
             print("Exit GeoFence Region")
+            LocationManager.isEnterGeofenceRegion = false
+            sendStatus(status: PresenseStatus.GOING_HOME)
             sendNotification(title: "学内領域から退出", body: "ステータスを「帰宅」に更新しました。")
         }
     }
     
     /// ステータス情報を在室管理サーバに投げます。
     /// - parameter status: 更新するステータス値
-    private func sendStatus(status: Int) {
+    private func sendStatus(status: PresenseStatus) {
         let userData = RealmUserDataManager().getData()
         if userData.slackUserId == "-1" || userData.hId == "-1" {
             //ユーザ情報不足のため送信不可
@@ -132,7 +137,7 @@ extension LocationManager: CLLocationManagerDelegate {
         request.httpMethod = "POST"
         let params: [[String: String]] = [[
             "id": userData.hId,
-            "status": status.description,
+            "status": status.rawValue.description,
             "slackId": userData.slackUserId
             ]]
         do {
