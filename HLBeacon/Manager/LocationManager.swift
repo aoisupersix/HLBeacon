@@ -87,19 +87,19 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         //研究室領域の判定
         if region.identifier == LocationManager.BEACON_IDENTIFIER {
+            print("Enter Beacon Region")
             if !LocationManager.isEnterBeaconRegion {
                 //研究室領域に侵入
-                print("Enter Beacon Region")
                 LocationManager.isEnterBeaconRegion = true
                 //sendStatus(status: PresenseStatus.PRESENSE)
                 sendNotification(title: "研究室領域に侵入", body: "ステータスを「在室」に更新しました。")
             }
         //学内領域の判定
         } else if region.identifier == LocationManager.GEOFENCE_IDENTIFIER {
+            print("Enter Geofence Region")
             if !LocationManager.isEnterBeaconRegion && !LocationManager.isEnterGeofenceRegion {
                 //学内領域に侵入
-                print("Enter Geofence Region")
-                LocationManager.isEnterGeofenceRegion = false
+                LocationManager.isEnterGeofenceRegion = true
                 //sendStatus(status: PresenseStatus.IN_CAMPUS)
                 sendNotification(title: "学内領域に侵入", body: "ステータスを「学内」に更新しました。")
             }
@@ -112,14 +112,18 @@ extension LocationManager: CLLocationManagerDelegate {
         //研究室領域の判定
         if region.identifier == LocationManager.BEACON_IDENTIFIER {
             print("Exit Beacon Region")
-            LocationManager.isEnterBeaconRegion = false
-            //sendStatus(status: PresenseStatus.IN_CAMPUS)
-            sendNotification(title: "研究室領域から退出", body: "ステータスを「学内」に更新しました。")
+            if LocationManager.isEnterBeaconRegion {
+                LocationManager.isEnterBeaconRegion = false
+                //sendStatus(status: PresenseStatus.IN_CAMPUS)
+                sendNotification(title: "研究室領域から退出", body: "ステータスを「学内」に更新しました。")
+            }
         }else if region.identifier == LocationManager.GEOFENCE_IDENTIFIER {
             print("Exit GeoFence Region")
-            LocationManager.isEnterGeofenceRegion = false
-            //sendStatus(status: PresenseStatus.GOING_HOME)
-            sendNotification(title: "学内領域から退出", body: "ステータスを「帰宅」に更新しました。")
+            if LocationManager.isEnterGeofenceRegion {
+                LocationManager.isEnterGeofenceRegion = false
+                //sendStatus(status: PresenseStatus.GOING_HOME)
+                sendNotification(title: "学内領域から退出", body: "ステータスを「帰宅」に更新しました。")
+            }
         }
     }
     
