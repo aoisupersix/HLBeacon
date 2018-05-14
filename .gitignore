@@ -26,3 +26,6 @@ Pods/*
 
 # env file
 .env
+
+# Firebase
+GoogleService-Info.plist

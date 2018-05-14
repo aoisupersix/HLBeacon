@@ -115,7 +115,7 @@ extension LocationManager: CLLocationManagerDelegate {
             LocationManager.isEnterBeaconRegion = false
             //sendStatus(status: PresenseStatus.IN_CAMPUS)
             sendNotification(title: "研究室領域から退出", body: "ステータスを「学内」に更新しました。")
-        }else {
+        }else if region.identifier == LocationManager.GEOFENCE_IDENTIFIER {
             print("Exit GeoFence Region")
             LocationManager.isEnterGeofenceRegion = false
             //sendStatus(status: PresenseStatus.GOING_HOME)
