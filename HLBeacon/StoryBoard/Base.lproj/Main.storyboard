@@ -270,18 +270,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="あなたの識別子名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cFK-3I-ajA">
-                                <rect key="frame" x="16" y="76" width="343" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="kOa-vY-9PY"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="usersListTabelView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hdG-GG-wUb">
-                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="usersListTabelView" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hdG-GG-wUb">
+                                <rect key="frame" x="0.0" y="194" width="375" height="473"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Quu-6I-xlh" id="gEn-xu-N8p"/>
                                     <outlet property="delegate" destination="Quu-6I-xlh" id="r39-Gr-Od3"/>
@@ -290,7 +282,7 @@
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuB-DN-pb0">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="識別子(名字)選択" id="Dnj-Yb-PmY">
+                                    <navigationItem title="識別子(名前)選択" id="Dnj-Yb-PmY">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="7ve-5b-Hgc">
                                             <connections>
                                                 <action selector="BackView:" destination="Quu-6I-xlh" id="OWt-VU-Fd8"/>
@@ -299,19 +291,34 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ここで設定した識別子はステータス更新時の識別子として利用します。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiG-mq-fVr">
+                                <rect key="frame" x="16" y="140" width="343" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなたの識別子を選択してください。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mRf-hU-s9O">
+                                <rect key="frame" x="14" y="88" width="347" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yuB-DN-pb0" firstAttribute="leading" secondItem="g2m-oA-w8l" secondAttribute="leading" id="0b2-ZD-n7F"/>
-                            <constraint firstItem="cFK-3I-ajA" firstAttribute="leading" secondItem="g2m-oA-w8l" secondAttribute="leading" constant="16" id="8Aw-bU-4CG"/>
-                            <constraint firstItem="hdG-GG-wUb" firstAttribute="bottom" secondItem="g2m-oA-w8l" secondAttribute="bottom" id="CH9-9U-dMI"/>
-                            <constraint firstItem="cFK-3I-ajA" firstAttribute="top" secondItem="yuB-DN-pb0" secondAttribute="bottom" constant="12" id="Jxe-up-cZg"/>
-                            <constraint firstItem="hdG-GG-wUb" firstAttribute="leading" secondItem="g2m-oA-w8l" secondAttribute="leading" id="VhY-5X-ibb"/>
-                            <constraint firstItem="yuB-DN-pb0" firstAttribute="trailing" secondItem="g2m-oA-w8l" secondAttribute="trailing" id="fGa-mb-h6A"/>
-                            <constraint firstItem="yuB-DN-pb0" firstAttribute="top" secondItem="g2m-oA-w8l" secondAttribute="top" id="foI-mV-LEU"/>
-                            <constraint firstItem="hdG-GG-wUb" firstAttribute="trailing" secondItem="g2m-oA-w8l" secondAttribute="trailing" id="fpL-yp-JMb"/>
-                            <constraint firstItem="hdG-GG-wUb" firstAttribute="top" secondItem="cFK-3I-ajA" secondAttribute="bottom" constant="8" id="hLD-gI-Bh0"/>
-                            <constraint firstItem="g2m-oA-w8l" firstAttribute="trailing" secondItem="cFK-3I-ajA" secondAttribute="trailing" constant="16" id="q3N-Rt-eVj"/>
+                            <constraint firstItem="yuB-DN-pb0" firstAttribute="trailing" secondItem="g2m-oA-w8l" secondAttribute="trailing" id="3uQ-A8-x5J"/>
+                            <constraint firstItem="hdG-GG-wUb" firstAttribute="bottom" secondItem="g2m-oA-w8l" secondAttribute="bottom" id="5HU-uk-rda"/>
+                            <constraint firstItem="hdG-GG-wUb" firstAttribute="leading" secondItem="g2m-oA-w8l" secondAttribute="leading" id="Abh-Q2-tN6"/>
+                            <constraint firstItem="QiG-mq-fVr" firstAttribute="top" secondItem="mRf-hU-s9O" secondAttribute="bottom" constant="28" id="Pm4-cf-T4q"/>
+                            <constraint firstItem="g2m-oA-w8l" firstAttribute="trailing" secondItem="mRf-hU-s9O" secondAttribute="trailing" constant="14" id="X3y-Eq-aGs"/>
+                            <constraint firstItem="mRf-hU-s9O" firstAttribute="leading" secondItem="g2m-oA-w8l" secondAttribute="leading" constant="14" id="YmV-DE-liH"/>
+                            <constraint firstItem="mRf-hU-s9O" firstAttribute="top" secondItem="yuB-DN-pb0" secondAttribute="bottom" constant="24" id="bhv-YR-nyS"/>
+                            <constraint firstItem="QiG-mq-fVr" firstAttribute="leading" secondItem="g2m-oA-w8l" secondAttribute="leading" constant="16" id="gHc-D3-BYR"/>
+                            <constraint firstItem="yuB-DN-pb0" firstAttribute="top" secondItem="g2m-oA-w8l" secondAttribute="top" id="h63-4R-Kat"/>
+                            <constraint firstItem="yuB-DN-pb0" firstAttribute="leading" secondItem="g2m-oA-w8l" secondAttribute="leading" id="hc2-g2-W0P"/>
+                            <constraint firstItem="g2m-oA-w8l" firstAttribute="trailing" secondItem="QiG-mq-fVr" secondAttribute="trailing" constant="16" id="k1E-Ry-nZF"/>
+                            <constraint firstItem="hdG-GG-wUb" firstAttribute="top" secondItem="QiG-mq-fVr" secondAttribute="bottom" constant="20" id="pCe-wx-2fZ"/>
+                            <constraint firstItem="hdG-GG-wUb" firstAttribute="trailing" secondItem="g2m-oA-w8l" secondAttribute="trailing" id="qIu-NE-Qzk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g2m-oA-w8l"/>
                     </view>

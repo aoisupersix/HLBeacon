@@ -195,6 +195,9 @@ class MainViewController: UIViewController {
         if LocationManager.isEnterBeaconRegion {
             statusLabel.text = "在室"
             statusLabel.textColor = UIColor.blue
+        }else if LocationManager.isEnterGeofenceRegion {
+            statusLabel.text = "学内"
+            statusLabel.textColor = UIColor.green
         }else {
             statusLabel.text = "外出"
             statusLabel.textColor = UIColor.darkGray

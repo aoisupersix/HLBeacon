@@ -45,6 +45,7 @@ extension IdentifierInputViewController: UITableViewDelegate, UITableViewDataSou
     ///tableView各セルの生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.textLabel?.text = hLabUsers[indexPath.row].name
         return cell
     }
