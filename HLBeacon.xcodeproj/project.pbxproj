@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		651ADA778CE661183194DC52 /* Pods_HLBeacon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0872505F52595BD609F474E /* Pods_HLBeacon.framework */; };
+		E1706FD620A94A8D00B906BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1706FD520A94A8D00B906BB /* GoogleService-Info.plist */; };
 		E173739D209D29300032C0CA /* mapstogpx20180504_234921.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */; };
 		E17373A0209D4EB60032C0CA /* StatusConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173739F209D4EB60032C0CA /* StatusConst.swift */; };
 		E195887D2082307F0085E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887C2082307F0085E034 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 		882F6312414AB7F08C8D0A68 /* Pods-HLBeacon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.debug.xcconfig"; sourceTree = "<group>"; };
 		9CE89699F289FEECF120C7E0 /* Pods-HLBeacon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.release.xcconfig"; sourceTree = "<group>"; };
 		D0872505F52595BD609F474E /* Pods_HLBeacon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HLBeacon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1706FD520A94A8D00B906BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mapstogpx20180504_234921.gpx; sourceTree = "<group>"; };
 		E173739F209D4EB60032C0CA /* StatusConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusConst.swift; sourceTree = "<group>"; };
 		E19588792082307F0085E034 /* HLBeacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HLBeacon.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 		E195887B2082307F0085E034 /* HLBeacon */ = {
 			isa = PBXGroup;
 			children = (
+				E1706FD520A94A8D00B906BB /* GoogleService-Info.plist */,
 				E19E6CE1209541490042F878 /* Info.plist */,
 				E19E6CD12092FA000042F878 /* .env */,
 				E173739E209D4E980032C0CA /* Constants */,
@@ -241,6 +244,7 @@
 				E19588822082307F0085E034 /* Main.storyboard in Resources */,
 				E173739D209D29300032C0CA /* mapstogpx20180504_234921.gpx in Resources */,
 				E19E6CD22092FA000042F878 /* .env in Resources */,
+				E1706FD620A94A8D00B906BB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,13 +276,19 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -456,7 +466,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.hlBeaconPeripheral;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.hlBeacon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -476,7 +486,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.hlBeaconPeripheral;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.primethory.hlBeacon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
