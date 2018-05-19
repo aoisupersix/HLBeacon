@@ -8,6 +8,7 @@
 import UIKit
 import UserNotifications
 import RealmSwift
+import Firebase
 
 class MainViewController: UIViewController {
     private var hLabUsers: [HLabUserData] = []
@@ -25,34 +26,24 @@ class MainViewController: UIViewController {
     ///HLabManagerAPIを叩いてhLabManagerユーザリストを取得します
     private func getHLabUsers() {
         isCompleteHLabConnection = false
-        let url = URL(string: "https://script.googleusercontent.com/macros/echo?user_content_key=m4Gwgg9W_7kjuOn8NmuWIqIiPeGeY6Rw6ke23i7O5zIassxwr5pvP2HR4LvNmJTLl8sc3qoFaF5iHU_YV6pvwmPxGQwNCPp9m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnC7KzRAiUJKJsxOht5H96T6k7rwNRtxGwVrHKo0vZt2a-aICPhaGXBXRGDC86Rjg9kqhI51p3q1_&amp;lib=MjdNaf7H1FgzgxVIaR9gEUj8SyHr1OfNd")
-        var request = URLRequest(url: url!)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
         
-        URLSession.shared.dataTask(with: request) { data, response, err in
-            if err != nil {
-                print("HLAB-USERS-GET: Failed")
-                return;
+        self.hLabUsers = []
+        
+        //初期化処理
+        let rootRef = Database.database().reference()
+        rootRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let ref = snapshot.value as? NSDictionary
+            //メンバーの取得
+            let members = ref?["members"] as? NSArray ?? []
+            for (idx, member) in members.enumerated() {
+                let m = member as? NSDictionary
+                let userData = HLabUserData(id: idx.description, name: m?["name"] as! String, status: (m?["status"] as! Int64).description)
+                print("name:\(m?["name"] as! String),status:\((m?["status"] as! Int64).description)")
+                self.hLabUsers.append(userData)
             }
-            print("HLAB-USERS-GET: Success")
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                print(json)
-                let j = json as! NSDictionary
-                let members = j["member"] as! NSArray
-                for member in members {
-                    let m = member as! NSDictionary
-                    let id = m["id"] as! Int64
-                    let name = m["name"] as! String
-                    let status = m["status"] as! Int64
-                    self.hLabUsers.append(HLabUserData(id: id.description, name: name, status: status.description))
-                }
-                self.isCompleteHLabConnection = true
-            } catch {
-                print("JSON SerializeError")
-            }
-            }.resume()
+        })
+        
+        isCompleteHLabConnection = true
     }
     
     ///SlackAPIを叩いてユーザリストを取得します
@@ -166,10 +157,6 @@ class MainViewController: UIViewController {
             let userNameViewController = segue.destination as! UserNameInputViewController
             userNameViewController.slackUsers = sender as! [SlackUserData]
         }
-        else if segue.identifier == "ShowIdentifierInputView" {
-            let identifierInputViewController = segue.destination as! IdentifierInputViewController
-            identifierInputViewController.hLabUsers = sender as! [HLabUserData]
-        }
     }
     
     /// 外出ステータスをHLabManagerにプッシュします
@@ -204,6 +191,9 @@ class MainViewController: UIViewController {
         if LocationManager.isEnterBeaconRegion {
             statusLabel.text = "在室"
             statusLabel.textColor = UIColor.blue
+        }else if LocationManager.isEnterGeofenceRegion {
+            statusLabel.text = "学内"
+            statusLabel.textColor = UIColor.green
         }else {
             statusLabel.text = "外出"
             statusLabel.textColor = UIColor.darkGray

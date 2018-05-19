@@ -8,6 +8,7 @@
 import UIKit
 import UserNotifications
 import RealmSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -48,6 +49,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             LocationManager.requestAlwaysAuthorization()
             return true
         }
+        
+        //Init firebase
+        FirebaseApp.configure()
         
         //Realm Migration
         let config = Realm.Configuration(

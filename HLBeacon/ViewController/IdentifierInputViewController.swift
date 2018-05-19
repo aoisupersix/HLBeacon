@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 /// HLab-Manager識別子入力ビューのViewController
 class IdentifierInputViewController: UIViewController {
@@ -17,6 +18,23 @@ class IdentifierInputViewController: UIViewController {
     var hLabUsers: [HLabUserData] = []
 
     override func viewDidLoad() {
+        //ユーザ情報初期化
+        let rootRef = Database.database().reference()
+        rootRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let ref = snapshot.value as? NSDictionary
+            //メンバーの取得
+            let members = ref?["members"] as? NSArray ?? []
+            for (idx, member) in members.enumerated() {
+                let m = member as? NSDictionary
+                let userData = HLabUserData(id: idx.description, name: m?["name"] as! String, status: (m?["status"] as! Int64).description)
+                print("name:\(m?["name"] as! String),status:\((m?["status"] as! Int64).description)")
+                self.hLabUsers.append(userData)
+            }
+            
+            self.tableView.reloadData()
+
+        })
+        
         super.viewDidLoad()
     }
     
@@ -45,6 +63,7 @@ extension IdentifierInputViewController: UITableViewDelegate, UITableViewDataSou
     ///tableView各セルの生成
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
+        cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         cell.textLabel?.text = hLabUsers[indexPath.row].name
         return cell
     }

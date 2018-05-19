@@ -17,7 +17,9 @@ class LocationManager: CLLocationManager {
     static let BEACON_IDENTIFIER = "tokyo.aoisupersix.beacon"
     
     /// 学内ジオフェンスの中心緯度経度
-    static let GEOFENCE_COORDINATE = CLLocationCoordinate2DMake(35.817237, 139.424543)
+    //static let GEOFENCE_COORDINATE = CLLocationCoordinate2DMake(35.626514, 139.279283) //工学部棟
+    static let GEOFENCE_COORDINATE = CLLocationCoordinate2DMake(35.817236, 139.424508) //自宅
+
     /// 学内ジオフェンスの識別子
     static let GEOFENCE_IDENTIFIER = "tokyo.aoisupersix.campus"
 
@@ -27,7 +29,7 @@ class LocationManager: CLLocationManager {
     /// 研究室のビーコン領域
     static let beaconRegion = CLBeaconRegion(proximityUUID: LocationManager.BEACON_UUID, major: CLBeaconMajorValue(1), minor: CLBeaconMinorValue(1), identifier: LocationManager.BEACON_IDENTIFIER)
     /// 学内のジオフェンス領域
-    static let moniteringRegion = CLCircularRegion.init(center: LocationManager.GEOFENCE_COORDINATE, radius: 100.0, identifier: LocationManager.GEOFENCE_IDENTIFIER)
+    static let moniteringRegion = CLCircularRegion.init(center: LocationManager.GEOFENCE_COORDINATE, radius: 400.0, identifier: LocationManager.GEOFENCE_IDENTIFIER)
     
     /// 研究室のビーコン領域に侵入しているかどうかを表すフラグ
     static var isEnterBeaconRegion = false
@@ -87,21 +89,23 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         //研究室領域の判定
         if region.identifier == LocationManager.BEACON_IDENTIFIER {
+            print("Enter Beacon Region")
+            //研究室領域に侵入
+            LocationManager.isEnterBeaconRegion = true
+            //sendStatus(status: PresenseStatus.PRESENSE)
+            sendNotification(title: "研究室領域に侵入", body: "ステータスを「在室」に更新しました。")
+            
             if !LocationManager.isEnterBeaconRegion {
-                //研究室領域に侵入
-                print("Enter Beacon Region")
-                LocationManager.isEnterBeaconRegion = true
-                sendStatus(status: PresenseStatus.PRESENSE)
-                sendNotification(title: "研究室領域に侵入", body: "ステータスを「在室」に更新しました。")
             }
         //学内領域の判定
         } else if region.identifier == LocationManager.GEOFENCE_IDENTIFIER {
+            print("Enter Geofence Region")
+            //学内領域に侵入
+            LocationManager.isEnterGeofenceRegion = true
+            //sendStatus(status: PresenseStatus.IN_CAMPUS)
+            sendNotification(title: "学内領域に侵入", body: "ステータスを「学内」に更新しました。")
+
             if !LocationManager.isEnterBeaconRegion && !LocationManager.isEnterGeofenceRegion {
-                //学内領域に侵入
-                print("Enter Geofence Region")
-                LocationManager.isEnterGeofenceRegion = false
-                sendStatus(status: PresenseStatus.IN_CAMPUS)
-                sendNotification(title: "学内領域に侵入", body: "ステータスを「学内」に更新しました。")
             }
         }
     }
@@ -112,14 +116,22 @@ extension LocationManager: CLLocationManagerDelegate {
         //研究室領域の判定
         if region.identifier == LocationManager.BEACON_IDENTIFIER {
             print("Exit Beacon Region")
+            //研究室領域から退出
             LocationManager.isEnterBeaconRegion = false
-            sendStatus(status: PresenseStatus.IN_CAMPUS)
+            //sendStatus(status: PresenseStatus.IN_CAMPUS)
             sendNotification(title: "研究室領域から退出", body: "ステータスを「学内」に更新しました。")
-        }else {
+            if LocationManager.isEnterBeaconRegion {
+
+            }
+        }else if region.identifier == LocationManager.GEOFENCE_IDENTIFIER {
             print("Exit GeoFence Region")
+            //学内領域から退出
             LocationManager.isEnterGeofenceRegion = false
-            sendStatus(status: PresenseStatus.GOING_HOME)
+            //sendStatus(status: PresenseStatus.GOING_HOME)
             sendNotification(title: "学内領域から退出", body: "ステータスを「帰宅」に更新しました。")
+
+            if LocationManager.isEnterGeofenceRegion {
+            }
         }
     }
     
