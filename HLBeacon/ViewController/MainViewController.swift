@@ -157,10 +157,6 @@ class MainViewController: UIViewController {
             let userNameViewController = segue.destination as! UserNameInputViewController
             userNameViewController.slackUsers = sender as! [SlackUserData]
         }
-        else if segue.identifier == "ShowIdentifierInputView" {
-            let identifierInputViewController = segue.destination as! IdentifierInputViewController
-            identifierInputViewController.hLabUsers = sender as! [HLabUserData]
-        }
     }
     
     /// 外出ステータスをHLabManagerにプッシュします
