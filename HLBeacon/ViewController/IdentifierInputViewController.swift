@@ -13,9 +13,13 @@ class IdentifierInputViewController: UIViewController {
     
     /// IdentifierInputViewのテーブル
     @IBOutlet weak var tableView: UITableView!
+    ///閉じるボタン
+    @IBOutlet var dismissButton: UIBarButtonItem!
     
+    ///閉じるボタンが有効かどうか
+    var isEnabledDismissButton: Bool! = false
     /// Hlabユーザ情報
-    var hLabUsers: [HLabUserData] = []
+    private var hLabUsers: [HLabUserData] = []
 
     override func viewDidLoad() {
         //ユーザ情報初期化
@@ -34,6 +38,7 @@ class IdentifierInputViewController: UIViewController {
             self.tableView.reloadData()
 
         })
+        dismissButton.isEnabled = isEnabledDismissButton
         
         super.viewDidLoad()
     }

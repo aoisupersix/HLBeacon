@@ -283,9 +283,9 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="識別子(名前)選択" id="Dnj-Yb-PmY">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="7ve-5b-Hgc">
+                                        <barButtonItem key="leftBarButtonItem" enabled="NO" systemItem="stop" id="7ve-5b-Hgc">
                                             <connections>
-                                                <action selector="BackView:" destination="Quu-6I-xlh" id="OWt-VU-Fd8"/>
+                                                <action selector="BackView:" destination="Quu-6I-xlh" id="0iD-rw-r2F"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -323,6 +323,7 @@
                         <viewLayoutGuide key="safeArea" id="g2m-oA-w8l"/>
                     </view>
                     <connections>
+                        <outlet property="dismissButton" destination="7ve-5b-Hgc" id="ZiD-cP-vB2"/>
                         <outlet property="tableView" destination="hdG-GG-wUb" id="FyA-0F-khS"/>
                     </connections>
                 </viewController>

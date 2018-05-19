@@ -156,6 +156,9 @@ class MainViewController: UIViewController {
         if segue.identifier == "ShowUserNameInputView" {
             let userNameViewController = segue.destination as! UserNameInputViewController
             userNameViewController.slackUsers = sender as! [SlackUserData]
+        }else if segue.identifier == "ShowIdentifierInputView" {
+            let identifierViewController = segue.destination as! IdentifierInputViewController
+            identifierViewController.isEnabledDismissButton = true
         }
     }
     
