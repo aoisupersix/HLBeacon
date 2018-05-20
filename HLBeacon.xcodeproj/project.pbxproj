@@ -19,7 +19,6 @@
 		E1958884208230810085E034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1958883208230810085E034 /* Assets.xcassets */; };
 		E1958887208230810085E034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1958885208230810085E034 /* LaunchScreen.storyboard */; };
 		E19588912082408D0085E034 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19588902082408D0085E034 /* LocationManager.swift */; };
-		E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */; };
 		E19E6CCE2090A15C0042F878 /* SlackUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CCD2090A15C0042F878 /* SlackUserData.swift */; };
 		E19E6CD22092FA000042F878 /* .env in Resources */ = {isa = PBXBuildFile; fileRef = E19E6CD12092FA000042F878 /* .env */; };
 		E19E6CD4209306190042F878 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19E6CD3209306190042F878 /* UserTableViewCell.swift */; };
@@ -46,7 +45,6 @@
 		E1958883208230810085E034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1958886208230810085E034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E19588902082408D0085E034 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameInputViewController.swift; sourceTree = "<group>"; };
 		E19E6CCD2090A15C0042F878 /* SlackUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackUserData.swift; sourceTree = "<group>"; };
 		E19E6CD12092FA000042F878 /* .env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
 		E19E6CD3209306190042F878 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				E195887E2082307F0085E034 /* MainViewController.swift */,
-				E19E6CC820904E8F0042F878 /* UserNameInputViewController.swift */,
 				E19E6CD8209449F30042F878 /* IdentifierInputViewController.swift */,
 			);
 			path = ViewController;
@@ -317,7 +314,6 @@
 				E19E6CD9209449F30042F878 /* IdentifierInputViewController.swift in Sources */,
 				E17373A0209D4EB60032C0CA /* StatusConst.swift in Sources */,
 				E19E6CDB20944F010042F878 /* HLabUserData.swift in Sources */,
-				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
 				E1128D3920B1352E0036FE85 /* SlackAuthManager.swift in Sources */,
 				E19E6CDD209468930042F878 /* RealmUserData.swift in Sources */,
 				E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */,

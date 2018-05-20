@@ -121,21 +121,15 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //users.listを遷移先に受け渡し
-        if segue.identifier == "ShowUserNameInputView" {
-            let userNameViewController = segue.destination as! UserNameInputViewController
-            userNameViewController.slackUsers = sender as! [SlackUserData]
-        }else if segue.identifier == "ShowIdentifierInputView" {
+        if segue.identifier == "ShowIdentifierInputView" {
             let identifierViewController = segue.destination as! IdentifierInputViewController
             identifierViewController.isEnabledDismissButton = true
         }
     }
         
-    ///UserNameInputViewに遷移します。
-    @IBAction func PerformUsernameInputView(_ sender: Any) {
-        if isCompleteSlackConnection {
-            print(slackUsers)
-            self.performSegue(withIdentifier: "ShowUserNameInputView", sender: slackUsers)
-        }
+    ///SlackのOAuth認証を行います
+    @IBAction func PerformSlackAuth(_ sender: Any) {
+        SlackAuthManager().authSlack()
     }
     ///IdentifierInputViewに遷移します。
     @IBAction func PerformIdentifierInputView(_ sender: Any) {

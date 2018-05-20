@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,9 +62,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLz-3q-i3P">
                                 <rect key="frame" x="115" y="543" width="146" height="33"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Slackユーザ名選択"/>
+                                <state key="normal" title="Slackの認証を行う"/>
                                 <connections>
-                                    <action selector="PerformUsernameInputView:" destination="BYZ-38-t0r" eventType="touchDown" id="Xek-nB-F1g"/>
+                                    <action selector="PerformSlackAuth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9sK-eS-yo1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fe1-mc-5oN">
@@ -125,115 +124,12 @@
                         <outlet property="rssiLabel" destination="J1C-VM-T2A" id="csC-Km-eao"/>
                         <outlet property="slackAuthLabel" destination="A0N-nl-fl8" id="KU0-3p-ivF"/>
                         <outlet property="statusLabel" destination="6Tp-Zb-74k" id="sxE-lN-amJ"/>
-                        <segue destination="97m-lZ-0Y2" kind="presentation" identifier="ShowUserNameInputView" modalPresentationStyle="fullScreen" id="zSb-Cl-75O"/>
                         <segue destination="Quu-6I-xlh" kind="presentation" identifier="ShowIdentifierInputView" modalPresentationStyle="fullScreen" id="DPc-aT-ZNM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="90.404797601199405"/>
-        </scene>
-        <!--User Name Input View Controller-->
-        <scene sceneID="oxP-6e-wdg">
-            <objects>
-                <viewController id="97m-lZ-0Y2" customClass="UserNameInputViewController" customModule="HLBeacon" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sm1-1b-3Re">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="usersListTabelView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ubh-vy-bR9">
-                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="userCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userCell" rowHeight="113" id="utP-4h-j1v" customClass="UserTableViewCell" customModule="HLBeacon" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="113"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="utP-4h-j1v" id="T9Z-M4-tIC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tSl-hF-ul8" customClass="AsyncImageView" customModule="HLBeacon" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="16" width="81" height="81"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="81" id="43G-bL-JY8"/>
-                                                        <constraint firstAttribute="width" constant="81" id="xFz-0D-Mhq"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザ名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="saR-RL-utu">
-                                                    <rect key="frame" x="104" y="11" width="256" height="32"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="saR-RL-utu" firstAttribute="leading" secondItem="tSl-hF-ul8" secondAttribute="trailing" constant="8" id="9Xd-8R-AIz"/>
-                                                <constraint firstItem="saR-RL-utu" firstAttribute="top" secondItem="T9Z-M4-tIC" secondAttribute="topMargin" id="BWd-1T-JTO"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="tSl-hF-ul8" secondAttribute="bottom" constant="5" id="CZj-Or-g7P"/>
-                                                <constraint firstItem="saR-RL-utu" firstAttribute="trailing" secondItem="T9Z-M4-tIC" secondAttribute="trailingMargin" id="DOz-JZ-Dos"/>
-                                                <constraint firstItem="tSl-hF-ul8" firstAttribute="top" secondItem="T9Z-M4-tIC" secondAttribute="topMargin" constant="5" id="QRD-3X-Byl"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="saR-RL-utu" secondAttribute="bottom" constant="59" id="X0K-qg-dSF"/>
-                                                <constraint firstItem="tSl-hF-ul8" firstAttribute="leading" secondItem="T9Z-M4-tIC" secondAttribute="leadingMargin" id="zgk-Ep-Vch"/>
-                                                <constraint firstItem="tSl-hF-ul8" firstAttribute="centerY" secondItem="T9Z-M4-tIC" secondAttribute="centerY" id="zjX-Eo-oDf"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="iconImage" destination="tSl-hF-ul8" id="ulH-V9-vxI"/>
-                                            <outlet property="userNameLabel" destination="saR-RL-utu" id="AYh-7M-FkM"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="97m-lZ-0Y2" id="2nq-nI-vEw"/>
-                                    <outlet property="delegate" destination="97m-lZ-0Y2" id="gdo-JI-Y65"/>
-                                </connections>
-                            </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="あなたのユーザ名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mv1-HE-Rya">
-                                <rect key="frame" x="16" y="76" width="343" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="q38-9a-oSF"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-hL-xnL">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Slackユーザ選択" id="Q0V-dB-JJc">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="zE5-mV-Kjp">
-                                            <connections>
-                                                <action selector="BackView:" destination="97m-lZ-0Y2" id="emb-j1-9sp"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Mv1-HE-Rya" firstAttribute="top" secondItem="sm1-1b-3Re" secondAttribute="top" constant="76" id="3N6-wh-EuH"/>
-                            <constraint firstItem="Mv1-HE-Rya" firstAttribute="centerX" secondItem="ubh-vy-bR9" secondAttribute="centerX" id="4PJ-oz-7g4"/>
-                            <constraint firstItem="Mv1-HE-Rya" firstAttribute="leading" secondItem="sm1-1b-3Re" secondAttribute="leadingMargin" id="CJ4-Da-9eU"/>
-                            <constraint firstAttribute="bottom" secondItem="ubh-vy-bR9" secondAttribute="bottom" id="JDP-dj-jV1"/>
-                            <constraint firstItem="ubh-vy-bR9" firstAttribute="top" secondItem="Mv1-HE-Rya" secondAttribute="bottom" constant="8" id="dBQ-Hu-GA4"/>
-                            <constraint firstItem="Eg3-hL-xnL" firstAttribute="leading" secondItem="ubh-vy-bR9" secondAttribute="leading" id="gJJ-pr-KXx"/>
-                            <constraint firstItem="ubh-vy-bR9" firstAttribute="leading" secondItem="0PQ-ey-WCN" secondAttribute="leading" id="q96-ll-Irq"/>
-                            <constraint firstItem="Mv1-HE-Rya" firstAttribute="centerX" secondItem="Eg3-hL-xnL" secondAttribute="centerX" id="rIa-dC-z4N"/>
-                            <constraint firstItem="Mv1-HE-Rya" firstAttribute="top" secondItem="Eg3-hL-xnL" secondAttribute="bottom" constant="12" id="vLQ-Gw-w74"/>
-                            <constraint firstItem="ubh-vy-bR9" firstAttribute="trailing" secondItem="0PQ-ey-WCN" secondAttribute="trailing" id="xc1-mp-F3I"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="0PQ-ey-WCN"/>
-                    </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="tableView" destination="ubh-vy-bR9" id="mMm-AR-uQL"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tmf-w3-vqi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1076" y="90.404797601199405"/>
         </scene>
         <!--Identifier Input View Controller-->
         <scene sceneID="N25-Rp-3Z7">
