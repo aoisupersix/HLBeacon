@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		651ADA778CE661183194DC52 /* Pods_HLBeacon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0872505F52595BD609F474E /* Pods_HLBeacon.framework */; };
 		E1128D3720B12BB30036FE85 /* SlackConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1128D3620B12BB30036FE85 /* SlackConst.swift */; };
+		E1128D3920B1352E0036FE85 /* SlackAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1128D3820B1352E0036FE85 /* SlackAuthManager.swift */; };
 		E1706FD620A94A8D00B906BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1706FD520A94A8D00B906BB /* GoogleService-Info.plist */; };
 		E173739D209D29300032C0CA /* mapstogpx20180504_234921.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */; };
 		E17373A0209D4EB60032C0CA /* StatusConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173739F209D4EB60032C0CA /* StatusConst.swift */; };
@@ -34,6 +35,7 @@
 		9CE89699F289FEECF120C7E0 /* Pods-HLBeacon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.release.xcconfig"; sourceTree = "<group>"; };
 		D0872505F52595BD609F474E /* Pods_HLBeacon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HLBeacon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1128D3620B12BB30036FE85 /* SlackConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackConst.swift; sourceTree = "<group>"; };
+		E1128D3820B1352E0036FE85 /* SlackAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackAuthManager.swift; sourceTree = "<group>"; };
 		E1706FD520A94A8D00B906BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mapstogpx20180504_234921.gpx; sourceTree = "<group>"; };
 		E173739F209D4EB60032C0CA /* StatusConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusConst.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				E19588902082408D0085E034 /* LocationManager.swift */,
 				E19E6CDF209469C60042F878 /* RealmUserDataManager.swift */,
+				E1128D3820B1352E0036FE85 /* SlackAuthManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				E17373A0209D4EB60032C0CA /* StatusConst.swift in Sources */,
 				E19E6CDB20944F010042F878 /* HLabUserData.swift in Sources */,
 				E19E6CC920904E8F0042F878 /* UserNameInputViewController.swift in Sources */,
+				E1128D3920B1352E0036FE85 /* SlackAuthManager.swift in Sources */,
 				E19E6CDD209468930042F878 /* RealmUserData.swift in Sources */,
 				E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,
