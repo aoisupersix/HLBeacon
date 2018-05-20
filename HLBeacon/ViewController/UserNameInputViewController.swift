@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import SafariServices
 
 /// Slackのユーザ名入力ビューのViewController
 class UserNameInputViewController: UIViewController {
@@ -16,13 +19,43 @@ class UserNameInputViewController: UIViewController {
     /// Slackのユーザ情報
     var slackUsers: [SlackUserData] = []
     
+    var session: SFAuthenticationSession? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //認可コード取得
+        let env = ProcessInfo.processInfo.environment
+        let url = URL(string: SLACK_AUTHORIZE_URL + "?client_id=\(env["SLACK_CLIENT_ID"]!)&scope=users:write")!
+        let callbackUrlScheme = "hl-beacon"
+
+        session = SFAuthenticationSession(
+            url: url,
+            callbackURLScheme: callbackUrlScheme,
+            completionHandler: {(callbackURL, error) in
+                //アクセストークン取得
+                let query = callbackURL?.query?.components(separatedBy: "=")
+                if query![0] == "code" {
+                    let accessCode = query![1]
+                    self.getAccessToken(code: accessCode)
+                }
+        })
+        session?.start()
+    }
+    
+    private func getAccessToken(code: String) {
+        let env = ProcessInfo.processInfo.environment
+        Alamofire.request( SLACK_OAUTH_URL + "?client_id=\(env["SLACK_CLIENT_ID"]!)&client_secret=\(env["SLACK_CLIENT_SECRET"]!)&code=\(code)").responseJSON{
+            response in
+            let json = JSON(response.result.value!)
+            print("access_token:\(json["access_token"])")
+        }
     }
     
     /// 戻るボタン押下時にビューを遷移します
     @IBAction func BackView(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+
+        //self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,11 +89,8 @@ extension UserNameInputViewController: UITableViewDelegate, UITableViewDataSourc
         //選択されたセルのユーザ情報を取得
         let selectedCell = tableView.cellForRow(at: indexPath) as! UserTableViewCell
         let userName = selectedCell.userNameLabel.text
-        let selectedUser = slackUsers.filter({ $0.name == userName}).first
-        
-        //登録
-        RealmUserDataManager().setData(slackId: selectedUser?.id)
-        
+        _ = slackUsers.filter({ $0.name == userName}).first
+                
         //ビュー遷移
         self.dismiss(animated: true, completion: nil)
     }

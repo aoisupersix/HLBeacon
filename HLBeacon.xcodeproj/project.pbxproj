@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		651ADA778CE661183194DC52 /* Pods_HLBeacon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0872505F52595BD609F474E /* Pods_HLBeacon.framework */; };
+		E1128D3720B12BB30036FE85 /* SlackConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1128D3620B12BB30036FE85 /* SlackConst.swift */; };
 		E1706FD620A94A8D00B906BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1706FD520A94A8D00B906BB /* GoogleService-Info.plist */; };
 		E173739D209D29300032C0CA /* mapstogpx20180504_234921.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */; };
 		E17373A0209D4EB60032C0CA /* StatusConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173739F209D4EB60032C0CA /* StatusConst.swift */; };
@@ -32,6 +33,7 @@
 		882F6312414AB7F08C8D0A68 /* Pods-HLBeacon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.debug.xcconfig"; sourceTree = "<group>"; };
 		9CE89699F289FEECF120C7E0 /* Pods-HLBeacon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HLBeacon.release.xcconfig"; path = "Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon.release.xcconfig"; sourceTree = "<group>"; };
 		D0872505F52595BD609F474E /* Pods_HLBeacon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HLBeacon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1128D3620B12BB30036FE85 /* SlackConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlackConst.swift; sourceTree = "<group>"; };
 		E1706FD520A94A8D00B906BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mapstogpx20180504_234921.gpx; sourceTree = "<group>"; };
 		E173739F209D4EB60032C0CA /* StatusConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusConst.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				E173739F209D4EB60032C0CA /* StatusConst.swift */,
+				E1128D3620B12BB30036FE85 /* SlackConst.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -276,17 +279,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HLBeacon/Pods-HLBeacon-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -312,6 +319,7 @@
 				E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,
 				E19588912082408D0085E034 /* LocationManager.swift in Sources */,
+				E1128D3720B12BB30036FE85 /* SlackConst.swift in Sources */,
 				E19E6CD4209306190042F878 /* UserTableViewCell.swift in Sources */,
 				E19E6CCE2090A15C0042F878 /* SlackUserData.swift in Sources */,
 			);

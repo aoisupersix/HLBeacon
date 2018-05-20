@@ -135,37 +135,15 @@ extension LocationManager: CLLocationManagerDelegate {
         }
     }
     
-    /// ステータス情報を在室管理サーバに投げます。
+    /// ステータス情報を更新します
     /// - parameter status: 更新するステータス値
-    private func sendStatus(status: PresenseStatus) {
+    private func updateStatus(status: PresenseStatus) {
         let userData = RealmUserDataManager().getData()
-        if userData.slackUserId == "-1" || userData.hId == "-1" {
+        if userData?.slackAccessToken == nil || userData?.hId == nil {
             //ユーザ情報不足のため送信不可
             return
         }
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbwtEGgAOQ6LA3rcvsLcQFrrg8uVE1v5lkg8eNn40YjwAASTwmc/exec")
-        var request = URLRequest(url: url!)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let params: [[String: String]] = [[
-            "id": userData.hId,
-            "status": status.rawValue.description,
-            "slackId": userData.slackUserId
-            ]]
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-            
-            URLSession.shared.dataTask(with: request) { data, response, err in
-                if err != nil {
-                    print("SLACK-USERS-GET: Failed")
-                    return;
-                }
-                print("SLACK-USERS-GET: Success")
-                print(data!)
-                }.resume()
-        }catch{
-            fatalError(error.localizedDescription)
-        }
+        //TODO RealtimeDatabaseの更新処理
     }
     
     /// ユーザにプッシュ通知を送信します。
