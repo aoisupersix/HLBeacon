@@ -8,4 +8,6 @@ target 'HLBeacon' do
   pod 'Firebase'
   pod 'Firebase/Database'
   pod 'RealmSwift'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
 end
