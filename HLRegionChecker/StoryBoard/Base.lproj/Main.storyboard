@@ -29,13 +29,13 @@
         <!--HL-RegionChecker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" title="HL-RegionChecker" id="BYZ-38-t0r" customClass="MainViewController" customModule="HLBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="HL-RegionChecker" id="BYZ-38-t0r" customClass="MainViewController" customModule="HLRegionChecker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在の端末状態:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sb8-ZP-zgS">
-                                <rect key="frame" x="92" y="104" width="191.5" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在のステータス:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sb8-ZP-zgS">
+                                <rect key="frame" x="79" y="104" width="218" height="31.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -118,7 +118,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="HL-RegionChecker" id="bMr-yb-tRZ"/>
+                    <navigationItem key="navigationItem" title="HL-RegionChecker" id="bMr-yb-tRZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="7t3-Z1-qfY"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="hLabIdentifierLabel" destination="gQQ-PH-GAi" id="iEM-uo-Ff1"/>
                         <outlet property="rssiLabel" destination="J1C-VM-T2A" id="csC-Km-eao"/>
@@ -134,7 +136,7 @@
         <!--Identifier Input View Controller-->
         <scene sceneID="N25-Rp-3Z7">
             <objects>
-                <viewController storyboardIdentifier="IdentifierInputViewController" title="Identifier Input View Controller" id="Quu-6I-xlh" customClass="IdentifierInputViewController" customModule="HLBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdentifierInputViewController" title="Identifier Input View Controller" id="Quu-6I-xlh" customClass="IdentifierInputViewController" customModule="HLRegionChecker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pTm-kH-BoP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
