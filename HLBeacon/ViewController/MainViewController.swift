@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var rssiLabel: UILabel!
-    @IBOutlet var slackIdLabel: UILabel!
+    @IBOutlet var slackAuthLabel: UILabel!
     @IBOutlet var hLabIdentifierLabel: UILabel!
     
     var uiUpdateTimer: Timer? = nil
@@ -86,39 +86,6 @@ class MainViewController: UIViewController {
             }.resume()
     }
     
-    /// ステータス情報をHLManagerにプッシュします
-    /// - parameter status: 0であれば外出,1であれば在室
-    private func sendStatus(status: Int) {
-        let userData = RealmUserDataManager().getData()
-        if userData.slackUserId == "-1" || userData.hId == "-1" {
-            //ユーザ情報不足
-            return
-        }
-        let url = URL(string: "https://script.google.com/macros/s/AKfycbwtEGgAOQ6LA3rcvsLcQFrrg8uVE1v5lkg8eNn40YjwAASTwmc/exec")
-        var request = URLRequest(url: url!)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let params: [[String: String]] = [[
-            "id": userData.hId,
-            "status": status.description,
-            "slackId": userData.slackUserId
-            ]]
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
-            
-            URLSession.shared.dataTask(with: request) { data, response, err in
-                if err != nil {
-                    print("SLACK-USERS-GET: Failed")
-                    return;
-                }
-                print("SLACK-USERS-GET: Success")
-                print(data!)
-                }.resume()
-        }catch{
-            fatalError(error.localizedDescription)
-        }
-    }
-    
     /// 確認アラートを表示します。
     /// - parameter title: アラートのタイトル
     /// - parameter message: アラートのメッセージ
@@ -142,8 +109,9 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //Viewの再描画
         let userData = RealmUserDataManager().getData()
-        slackIdLabel.text = "SlackId: \(userData.slackUserId)"
-        hLabIdentifierLabel.text = "HLabIdentifier: \(userData.hIdentifier)"
+        slackAuthLabel.text = userData?.slackAccessToken != nil ? "Slack認証済み" : "Slack未認証"
+
+        hLabIdentifierLabel.text = "HLabIdentifier: \(String(describing: userData?.hIdentifier))"
     }
     
     override func didReceiveMemoryWarning() {
@@ -161,19 +129,7 @@ class MainViewController: UIViewController {
             identifierViewController.isEnabledDismissButton = true
         }
     }
-    
-    /// 外出ステータスをHLabManagerにプッシュします
-    @IBAction func setStatusToOutRoom(_ sender: Any) {
-        sendStatus(status: 0)
-        pushConfirmAlert(title: "ステータス変更完了", message: "HLabManagerのステータスを外出に変更しました。")
-    }
-    
-    /// 在室ステータスをHLabManagerにプッシュします
-    @IBAction func setStatusToInRoom(_ sender: Any) {
-        sendStatus(status: 1)
-        pushConfirmAlert(title: "ステータス変更完了", message: "HLabManagerのステータスを在室に変更しました。")
-    }
-    
+        
     ///UserNameInputViewに遷移します。
     @IBAction func PerformUsernameInputView(_ sender: Any) {
         if isCompleteSlackConnection {

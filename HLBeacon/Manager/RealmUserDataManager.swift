@@ -15,16 +15,13 @@ class RealmUserDataManager {
     /// ユーザ情報を取得します。
     /// ユーザ情報が存在しない場合はダミーのクラスを返します。(hIdが-1)
     /// - returns: 取得したユーザ情報
-    func getData() -> RealmUserData {
+    func getData() -> RealmUserData? {
         let realm = try! Realm()
         //print(Realm.Configuration.defaultConfiguration.fileURL!)
         let data = realm.objects(RealmUserData.self)
         if data.count == 0 {
-            //データ作成
+            //ダミー作成
             let dummy = RealmUserData()
-            dummy.slackUserId = "-1"
-            dummy.hId = "-1"
-            dummy.hIdentifier = "null"
             addData(data: dummy)
             return dummy
         }
@@ -33,11 +30,11 @@ class RealmUserDataManager {
     
     /// ユーザ情報をRealmに登録します。
     /// 不要な引数は省略可能
-    /// - parameter slackId: SlackのユーザID
+    /// - parameter slackAccessToken: Slackのアクセストークン
     /// - parameter hId: HLabManagerのID(番地)
     /// - parameter hIdentifier: HLabMangerの識別子
-    func setData(slackId: String? = nil, hId: String? = nil, hIdentifier: String? = nil) {
-        if slackId == nil && hId == nil && hIdentifier == nil {
+    func setData(slackAccessToken: String? = nil, hId: String? = nil, hIdentifier: String? = nil) {
+        if slackAccessToken == nil && hId == nil && hIdentifier == nil {
             return
         }
         //データを取得して書き換え
@@ -45,14 +42,14 @@ class RealmUserDataManager {
         //削除
         let realm = try! Realm()
         try! realm.write() {
-            if slackId != nil {
-                data.slackUserId = slackId!
+            if slackAccessToken != nil {
+                data?.slackAccessToken = slackAccessToken!
             }
             if hId != nil {
-                data.hId = hId!
+                data?.hId = hId!
             }
             if hIdentifier != nil {
-                data.hIdentifier = hIdentifier!
+                data?.hIdentifier = hIdentifier!
             }
         }
     }

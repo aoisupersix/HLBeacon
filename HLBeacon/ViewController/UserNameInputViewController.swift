@@ -45,7 +45,7 @@ class UserNameInputViewController: UIViewController {
     
     private func getAccessToken(code: String) {
         let env = ProcessInfo.processInfo.environment
-        Alamofire.request( SLACK_OAUTH_URL + "client_id=\(env["SLACK_CLIENT_ID"]!)&client_secret=\(env["SLACK_CLIENT_SECRET"]!)&code=\(code)").responseJSON{
+        Alamofire.request( SLACK_OAUTH_URL + "?client_id=\(env["SLACK_CLIENT_ID"]!)&client_secret=\(env["SLACK_CLIENT_SECRET"]!)&code=\(code)").responseJSON{
             response in
             let json = JSON(response.result.value!)
             print("access_token:\(json["access_token"])")
@@ -89,11 +89,8 @@ extension UserNameInputViewController: UITableViewDelegate, UITableViewDataSourc
         //選択されたセルのユーザ情報を取得
         let selectedCell = tableView.cellForRow(at: indexPath) as! UserTableViewCell
         let userName = selectedCell.userNameLabel.text
-        let selectedUser = slackUsers.filter({ $0.name == userName}).first
-        
-        //登録
-        RealmUserDataManager().setData(slackId: selectedUser?.id)
-        
+        _ = slackUsers.filter({ $0.name == userName}).first
+                
         //ビュー遷移
         self.dismiss(animated: true, completion: nil)
     }

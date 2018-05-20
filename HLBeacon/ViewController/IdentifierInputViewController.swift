@@ -81,7 +81,7 @@ extension IdentifierInputViewController: UITableViewDelegate, UITableViewDataSou
         let selectedUser = hLabUsers.filter({ $0.name == userName}).first
         
         //登録
-        RealmUserDataManager().setData(slackId: nil, hId: selectedUser?.id, hIdentifier: selectedUser?.name)
+        RealmUserDataManager().setData(slackAccessToken: nil, hId: selectedUser?.id, hIdentifier: selectedUser?.name)
         
         //ビュー遷移
         self.dismiss(animated: true, completion: nil)

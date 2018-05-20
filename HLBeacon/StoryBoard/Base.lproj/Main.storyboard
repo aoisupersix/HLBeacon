@@ -82,31 +82,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="N6t-jQ-ntw">
-                                <rect key="frame" x="69" y="458" width="237" height="70"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnv-Su-i4J">
-                                        <rect key="frame" x="0.0" y="0.0" width="98" height="70"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="49"/>
-                                        <state key="normal" title="外出">
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="setStatusToOutRoom:" destination="BYZ-38-t0r" eventType="touchDown" id="eLc-gw-KMy"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atO-BD-PjQ">
-                                        <rect key="frame" x="139" y="0.0" width="98" height="70"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="49"/>
-                                        <state key="normal" title="在室">
-                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="setStatusToInRoom:" destination="BYZ-38-t0r" eventType="touchDown" id="34Y-sx-32d"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SlackName: Undefined" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0N-nl-fl8">
                                 <rect key="frame" x="96" y="333" width="183" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -134,13 +109,11 @@
                             <constraint firstItem="kpA-Rb-1Uj" firstAttribute="top" secondItem="J1C-VM-T2A" secondAttribute="bottom" constant="8" id="R98-mj-kRj"/>
                             <constraint firstItem="A0N-nl-fl8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rqv-ie-m17"/>
                             <constraint firstItem="kpA-Rb-1Uj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W31-Q0-gTT"/>
-                            <constraint firstItem="nLz-3q-i3P" firstAttribute="top" secondItem="N6t-jQ-ntw" secondAttribute="bottom" constant="15" id="X2u-uD-TEp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Fe1-mc-5oN" secondAttribute="bottom" constant="46" id="ebq-7z-qYa"/>
                             <constraint firstItem="gQQ-PH-GAi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fob-An-0dO"/>
                             <constraint firstItem="6Tp-Zb-74k" firstAttribute="top" secondItem="Sb8-ZP-zgS" secondAttribute="bottom" constant="8" id="hZv-hE-89e"/>
                             <constraint firstItem="nLz-3q-i3P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jt7-5N-iG9"/>
                             <constraint firstItem="Pe2-NX-ybX" firstAttribute="top" secondItem="kpA-Rb-1Uj" secondAttribute="bottom" constant="8" id="lNt-Yd-4eh"/>
-                            <constraint firstItem="N6t-jQ-ntw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nbP-dK-LlP"/>
                             <constraint firstItem="Sb8-ZP-zgS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="r0k-bE-Gyu"/>
                             <constraint firstItem="Sb8-ZP-zgS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vZS-5m-VEz"/>
                         </constraints>
@@ -150,7 +123,7 @@
                     <connections>
                         <outlet property="hLabIdentifierLabel" destination="gQQ-PH-GAi" id="iEM-uo-Ff1"/>
                         <outlet property="rssiLabel" destination="J1C-VM-T2A" id="csC-Km-eao"/>
-                        <outlet property="slackIdLabel" destination="A0N-nl-fl8" id="EL8-Cy-RbF"/>
+                        <outlet property="slackAuthLabel" destination="A0N-nl-fl8" id="KU0-3p-ivF"/>
                         <outlet property="statusLabel" destination="6Tp-Zb-74k" id="sxE-lN-amJ"/>
                         <segue destination="97m-lZ-0Y2" kind="presentation" identifier="ShowUserNameInputView" modalPresentationStyle="fullScreen" id="zSb-Cl-75O"/>
                         <segue destination="Quu-6I-xlh" kind="presentation" identifier="ShowIdentifierInputView" modalPresentationStyle="fullScreen" id="DPc-aT-ZNM"/>
