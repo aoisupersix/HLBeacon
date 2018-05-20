@@ -14,9 +14,13 @@ import UIKit
     /// - parameter sender: ボタンのオブジェクト
     @objc optional func didTouchStatusSelfUpdateButton(sender: Any)
     
-    /// 設定ボタンが押下された際に呼ばれます。
+    /// Slack再認証ボタンが押下された際に呼ばれます。
     /// - parameter sender: ボタンのオブジェクト
-    @objc optional func didTouchSettingButton(sender: Any)
+    @objc optional func didTouchSlackAuthButton(sender: Any)
+    
+    /// ユーザ識別子選択ボタンが押下された際に呼ばれます。
+    /// - parameter sender: ボタンのオブジェクト
+    @objc optional func didTouchUserIdentifierButton(sender: Any)
 }
 
 class PopoverMenuViewController: UIViewController {
@@ -36,8 +40,14 @@ class PopoverMenuViewController: UIViewController {
         delegate?.didTouchStatusSelfUpdateButton!(sender: sender)
     }
     
-    @IBAction func TouchSettingButton(_ sender: Any) {
+    @IBAction func TouchSlackAuthButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        delegate?.didTouchSettingButton!(sender: sender)
+        delegate?.didTouchSlackAuthButton!(sender: sender)
     }
+    
+    @IBAction func TouchUserIdentifierButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        delegate?.didTouchUserIdentifierButton!(sender: sender)
+    }
+    
 }

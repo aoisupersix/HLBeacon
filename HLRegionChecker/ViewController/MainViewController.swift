@@ -106,15 +106,6 @@ class MainViewController: UIViewController {
             view.delegate = self
         }
     }
-        
-    ///SlackのOAuth認証を行います
-    @IBAction func PerformSlackAuth(_ sender: Any) {
-        SlackAuthManager().authSlack()
-    }
-    ///IdentifierInputViewに遷移します。
-    @IBAction func PerformIdentifierInputView(_ sender: Any) {
-        self.performSegue(withIdentifier: "ShowIdentifierInputView", sender: nil)
-    }
     
     ///UIのラベルを更新します
     @objc func updateStatus() {
@@ -175,7 +166,13 @@ extension MainViewController: PopoverMenuViewDelegate {
         present(alert, animated: true, completion: nil)
     }
     
-    func didTouchSettingButton(sender: Any) {
-        print("touchSetting")
+    /// Slack再認証を行います
+    func didTouchSlackAuthButton(sender: Any) {
+        SlackAuthManager().authSlack()
+    }
+    
+    /// ユーザ識別子選択ビューに遷移します
+    func didTouchUserIdentifierButton(sender: Any) {
+        self.performSegue(withIdentifier: "ShowIdentifierInputView", sender: nil)
     }
 }

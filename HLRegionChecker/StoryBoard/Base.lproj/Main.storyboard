@@ -59,22 +59,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLz-3q-i3P">
-                                <rect key="frame" x="134" y="612" width="146" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="Slackの認証を行う"/>
-                                <connections>
-                                    <action selector="PerformSlackAuth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9sK-eS-yo1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fe1-mc-5oN">
-                                <rect key="frame" x="112" y="657" width="190" height="33"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title="HlabManager識別子選択"/>
-                                <connections>
-                                    <action selector="PerformIdentifierInputView:" destination="BYZ-38-t0r" eventType="touchDown" id="iRC-gV-A2x"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major: 1 Minor: 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe2-NX-ybX">
                                 <rect key="frame" x="161.33333333333334" y="304.66666666666669" width="91.333333333333343" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
@@ -97,9 +81,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="A0N-nl-fl8" firstAttribute="top" secondItem="Pe2-NX-ybX" secondAttribute="bottom" constant="14.5" id="44S-PF-5wN"/>
-                            <constraint firstItem="Fe1-mc-5oN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8oD-7d-EGT"/>
                             <constraint firstItem="6Tp-Zb-74k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="18" id="93J-6M-moP"/>
-                            <constraint firstItem="Fe1-mc-5oN" firstAttribute="top" secondItem="nLz-3q-i3P" secondAttribute="bottom" constant="12" id="A6O-3P-uuC"/>
                             <constraint firstItem="gQQ-PH-GAi" firstAttribute="top" secondItem="A0N-nl-fl8" secondAttribute="bottom" constant="7.5" id="BF4-pU-LyG"/>
                             <constraint firstItem="Pe2-NX-ybX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CC7-b7-5ZP"/>
                             <constraint firstItem="J1C-VM-T2A" firstAttribute="top" secondItem="6Tp-Zb-74k" secondAttribute="bottom" constant="7" id="IVx-Yr-gkW"/>
@@ -108,10 +90,8 @@
                             <constraint firstItem="kpA-Rb-1Uj" firstAttribute="top" secondItem="J1C-VM-T2A" secondAttribute="bottom" constant="8" id="R98-mj-kRj"/>
                             <constraint firstItem="A0N-nl-fl8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Rqv-ie-m17"/>
                             <constraint firstItem="kpA-Rb-1Uj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W31-Q0-gTT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Fe1-mc-5oN" secondAttribute="bottom" constant="46" id="ebq-7z-qYa"/>
                             <constraint firstItem="gQQ-PH-GAi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fob-An-0dO"/>
                             <constraint firstItem="6Tp-Zb-74k" firstAttribute="top" secondItem="Sb8-ZP-zgS" secondAttribute="bottom" constant="8" id="hZv-hE-89e"/>
-                            <constraint firstItem="nLz-3q-i3P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jt7-5N-iG9"/>
                             <constraint firstItem="Pe2-NX-ybX" firstAttribute="top" secondItem="kpA-Rb-1Uj" secondAttribute="bottom" constant="8" id="lNt-Yd-4eh"/>
                             <constraint firstItem="Sb8-ZP-zgS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="r0k-bE-Gyu"/>
                             <constraint firstItem="Sb8-ZP-zgS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vZS-5m-VEz"/>
@@ -151,17 +131,24 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="716"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0B-e4-Hex">
-                                        <rect key="frame" x="130.66666666666666" y="0.0" width="152.99999999999997" height="352.66666666666669"/>
+                                        <rect key="frame" x="130.66666666666666" y="0.0" width="152.99999999999997" height="231.33333333333334"/>
                                         <state key="normal" title="ステータスの手動更新"/>
                                         <connections>
                                             <action selector="TouchSelfUpdateButton:" destination="nA1-D5-URp" eventType="touchUpInside" id="mkM-IX-VIs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWC-FQ-OOp">
-                                        <rect key="frame" x="191.66666666666666" y="363.66666666666674" width="31" height="352.33333333333326"/>
-                                        <state key="normal" title="設定"/>
+                                        <rect key="frame" x="165.66666666666666" y="242.33333333333331" width="83" height="231.33333333333331"/>
+                                        <state key="normal" title="Slack再認証"/>
                                         <connections>
-                                            <action selector="TouchSettingButton:" destination="nA1-D5-URp" eventType="touchUpInside" id="AnT-p7-vCU"/>
+                                            <action selector="TouchSlackAuthButton:" destination="nA1-D5-URp" eventType="touchUpInside" id="Rac-7d-Dhh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIQ-nP-wnx">
+                                        <rect key="frame" x="145.66666666666666" y="484.66666666666669" width="122.99999999999997" height="231.33333333333331"/>
+                                        <state key="normal" title="ユーザ識別子選択"/>
+                                        <connections>
+                                            <action selector="TouchUserIdentifierButton:" destination="nA1-D5-URp" eventType="touchDown" id="brt-TC-1hF"/>
                                         </connections>
                                     </button>
                                 </subviews>
