@@ -28,11 +28,13 @@ class SlackAuthManager {
             url: url,
             callbackURLScheme: callbackUrlScheme,
             completionHandler: {(callbackURL, error) in
-                //アクセストークン取得
-                let query = callbackURL?.query?.components(separatedBy: "=")
-                if query![0] == "code" {
-                    let accessCode = query![1]
-                    self.getAccessToken(code: accessCode)
+                if error == nil {
+                    //アクセストークン取得
+                    let query = callbackURL?.query?.components(separatedBy: "=")
+                    if query![0] == "code" {
+                        let accessCode = query![1]
+                        self.getAccessToken(code: accessCode)
+                    }
                 }
         })
         session?.start()
