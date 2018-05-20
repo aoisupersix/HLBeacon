@@ -143,8 +143,36 @@ extension MainViewController: UIPopoverPresentationControllerDelegate {
 
 extension MainViewController: PopoverMenuViewDelegate {
     
+    private func alertAction(action: UIAlertAction) {
+        print(action.title ?? "nil")
+    }
+    
     func didTouchStatusSelfUpdateButton(sender: Any) {
-        print("touchState")
+        //ステータスの手動更新
+        let alert = UIAlertController(title: "ステータスの手動更新", message: "ステータスを手動で更新します。更新するステータスを選択してください", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let presenseAction: UIAlertAction = UIAlertAction(title: "在室", style: UIAlertActionStyle.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("在室")
+        })
+        let inCampusAction: UIAlertAction = UIAlertAction(title: "学内", style: UIAlertActionStyle.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("学内")
+        })
+        let goingHomeAction: UIAlertAction = UIAlertAction(title: "外出", style: UIAlertActionStyle.default, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("外出")
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("cancelAction")
+        })
+        
+        alert.addAction(presenseAction)
+        alert.addAction(inCampusAction)
+        alert.addAction(goingHomeAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     func didTouchSettingButton(sender: Any) {

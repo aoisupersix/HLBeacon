@@ -32,10 +32,12 @@ class PopoverMenuViewController: UIViewController {
     }
     
     @IBAction func TouchSelfUpdateButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
         delegate?.didTouchStatusSelfUpdateButton!(sender: sender)
     }
     
     @IBAction func TouchSettingButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
         delegate?.didTouchSettingButton!(sender: sender)
     }
 }
