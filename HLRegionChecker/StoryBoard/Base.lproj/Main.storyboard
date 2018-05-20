@@ -119,7 +119,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="HL-RegionChecker" id="bMr-yb-tRZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="7t3-Z1-qfY"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="3Point_Reader" landscapeImage="3Point_Reader" id="7t3-Z1-qfY">
+                            <connections>
+                                <segue destination="nA1-D5-URp" kind="popoverPresentation" identifier="ShowMenu" popoverAnchorBarButtonItem="7t3-Z1-qfY" id="itw-0N-0zx">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="hLabIdentifierLabel" destination="gQQ-PH-GAi" id="iEM-uo-Ff1"/>
@@ -132,6 +138,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="90.404797601199405"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="SrT-gy-adi">
+            <objects>
+                <viewController id="nA1-D5-URp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nPR-Qj-RVI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="scP-EX-i7A">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0B-e4-Hex">
+                                        <rect key="frame" x="111" y="0.0" width="153" height="318"/>
+                                        <state key="normal" title="ステータスの手動更新"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWC-FQ-OOp">
+                                        <rect key="frame" x="172" y="329" width="31" height="318"/>
+                                        <state key="normal" title="設定"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="scP-EX-i7A" firstAttribute="leading" secondItem="p1Y-qm-Tvr" secondAttribute="leading" id="6bY-ZK-AHy"/>
+                            <constraint firstItem="p1Y-qm-Tvr" firstAttribute="trailing" secondItem="scP-EX-i7A" secondAttribute="trailing" id="VRp-AA-uU9"/>
+                            <constraint firstItem="scP-EX-i7A" firstAttribute="top" secondItem="p1Y-qm-Tvr" secondAttribute="top" id="Yye-7w-ihX"/>
+                            <constraint firstItem="p1Y-qm-Tvr" firstAttribute="bottom" secondItem="scP-EX-i7A" secondAttribute="bottom" id="lnO-fM-7kq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p1Y-qm-Tvr"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgQ-2j-9oc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063" y="91"/>
         </scene>
         <!--Identifier Input View Controller-->
         <scene sceneID="N25-Rp-3Z7">
@@ -203,4 +245,7 @@
             <point key="canvasLocation" x="1063.2" y="884.70764617691157"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="3Point_Reader" width="21" height="21"/>
+    </resources>
 </document>

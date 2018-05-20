@@ -98,6 +98,10 @@ class MainViewController: UIViewController {
         if segue.identifier == "ShowIdentifierInputView" {
             let identifierViewController = segue.destination as! IdentifierInputViewController
             identifierViewController.isEnabledDismissButton = true
+        }else if segue.identifier == "ShowMenu" {
+            segue.destination.preferredContentSize = CGSize(width: 200, height: 100)
+            let popView = segue.destination.popoverPresentationController
+            popView!.delegate = self
         }
     }
         
@@ -129,3 +133,8 @@ class MainViewController: UIViewController {
     }
 }
 
+extension MainViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}

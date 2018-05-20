@@ -13,6 +13,7 @@
 		E173739D209D29300032C0CA /* mapstogpx20180504_234921.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */; };
 		E17373A0209D4EB60032C0CA /* StatusConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173739F209D4EB60032C0CA /* StatusConst.swift */; };
 		E187A43420B14A5600BE7CE7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E187A43320B14A5600BE7CE7 /* Default-568h@2x.png */; };
+		E187A43620B1679700BE7CE7 /* PopoverMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187A43520B1679700BE7CE7 /* PopoverMenuViewController.swift */; };
 		E195887D2082307F0085E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887C2082307F0085E034 /* AppDelegate.swift */; };
 		E195887F2082307F0085E034 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887E2082307F0085E034 /* MainViewController.swift */; };
 		E19588822082307F0085E034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19588802082307F0085E034 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		E173739C209D292F0032C0CA /* mapstogpx20180504_234921.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = mapstogpx20180504_234921.gpx; sourceTree = "<group>"; };
 		E173739F209D4EB60032C0CA /* StatusConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusConst.swift; sourceTree = "<group>"; };
 		E187A43320B14A5600BE7CE7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E187A43520B1679700BE7CE7 /* PopoverMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewController.swift; sourceTree = "<group>"; };
 		E19588792082307F0085E034 /* HLRegionChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HLRegionChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E195887C2082307F0085E034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E195887E2082307F0085E034 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				E195887E2082307F0085E034 /* MainViewController.swift */,
 				E19E6CD8209449F30042F878 /* IdentifierInputViewController.swift */,
+				E187A43520B1679700BE7CE7 /* PopoverMenuViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19E6CE0209469C60042F878 /* RealmUserDataManager.swift in Sources */,
+				E187A43620B1679700BE7CE7 /* PopoverMenuViewController.swift in Sources */,
 				E195887F2082307F0085E034 /* MainViewController.swift in Sources */,
 				E19E6CD9209449F30042F878 /* IdentifierInputViewController.swift in Sources */,
 				E17373A0209D4EB60032C0CA /* StatusConst.swift in Sources */,
