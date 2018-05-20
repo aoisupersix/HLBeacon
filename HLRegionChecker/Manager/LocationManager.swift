@@ -7,6 +7,7 @@
 
 import CoreLocation
 import UserNotifications
+import Firebase
 
 /// 位置情報関連の処理を行うクラス
 class LocationManager: CLLocationManager {
@@ -92,21 +93,15 @@ extension LocationManager: CLLocationManagerDelegate {
             print("Enter Beacon Region")
             //研究室領域に侵入
             LocationManager.isEnterBeaconRegion = true
-            //sendStatus(status: PresenseStatus.PRESENSE)
+            updateStatus(status: PresenseStatus.PRESENSE)
             sendNotification(title: "研究室領域に侵入", body: "ステータスを「在室」に更新しました。")
-            
-            if !LocationManager.isEnterBeaconRegion {
-            }
         //学内領域の判定
         } else if region.identifier == LocationManager.GEOFENCE_IDENTIFIER {
             print("Enter Geofence Region")
             //学内領域に侵入
             LocationManager.isEnterGeofenceRegion = true
-            //sendStatus(status: PresenseStatus.IN_CAMPUS)
+            updateStatus(status: PresenseStatus.IN_CAMPUS)
             sendNotification(title: "学内領域に侵入", body: "ステータスを「学内」に更新しました。")
-
-            if !LocationManager.isEnterBeaconRegion && !LocationManager.isEnterGeofenceRegion {
-            }
         }
     }
     
@@ -118,20 +113,14 @@ extension LocationManager: CLLocationManagerDelegate {
             print("Exit Beacon Region")
             //研究室領域から退出
             LocationManager.isEnterBeaconRegion = false
-            //sendStatus(status: PresenseStatus.IN_CAMPUS)
+            updateStatus(status: PresenseStatus.IN_CAMPUS)
             sendNotification(title: "研究室領域から退出", body: "ステータスを「学内」に更新しました。")
-            if LocationManager.isEnterBeaconRegion {
-
-            }
         }else if region.identifier == LocationManager.GEOFENCE_IDENTIFIER {
             print("Exit GeoFence Region")
             //学内領域から退出
             LocationManager.isEnterGeofenceRegion = false
-            //sendStatus(status: PresenseStatus.GOING_HOME)
+            updateStatus(status: PresenseStatus.GOING_HOME)
             sendNotification(title: "学内領域から退出", body: "ステータスを「帰宅」に更新しました。")
-
-            if LocationManager.isEnterGeofenceRegion {
-            }
         }
     }
     
@@ -143,7 +132,10 @@ extension LocationManager: CLLocationManagerDelegate {
             //ユーザ情報不足のため送信不可
             return
         }
-        //TODO RealtimeDatabaseの更新処理
+        let childUpdates = ["status": status.rawValue]
+        let rootRef = Database.database().reference()
+        let memRef = rootRef.child("members")
+        memRef.child(userData!.hId).updateChildValues(childUpdates)
     }
     
     /// ユーザにプッシュ通知を送信します。

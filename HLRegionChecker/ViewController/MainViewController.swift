@@ -12,6 +12,8 @@ import Firebase
 
 class MainViewController: UIViewController {
     
+    var membersUpdateEvent: DatabaseHandle? = nil
+    
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var rssiLabel: UILabel!
     @IBOutlet var slackAuthLabel: UILabel!
@@ -31,6 +33,8 @@ class MainViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    /// ステータス表示のラベルを引数に与えられたステータスに応じて変更します。
+    /// - parameter status: 更新するステータスID
     private func updateStatusLabel(status: Int) {
         //TODO ステータスの処理
         if status == PresenseStatus.PRESENSE.rawValue {
@@ -45,10 +49,11 @@ class MainViewController: UIViewController {
         }
     }
     
+    /// RealtimeDatabaseの更新トリガーを追加します。
     private func setFirebaseEvent() {
         let rootRef = Database.database().reference()
         let memRef = rootRef.child("members")
-        memRef.observe(.value, with: { (snap: DataSnapshot) in
+        self.membersUpdateEvent = memRef.observe(.value, with: { (snap: DataSnapshot) in
             let data = RealmUserDataManager().getData()
             if data?.hId == nil {
                 return
@@ -66,17 +71,21 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setFirebaseEvent()
-        //updateStatus()
-        //uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateStatus), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //Viewの再描画
+        setFirebaseEvent()
         let userData = RealmUserDataManager().getData()
         slackAuthLabel.text = userData?.slackAccessToken != nil ? "Slack認証済み" : "Slack未認証"
-
         hLabIdentifierLabel.text = "HLabIdentifier: \(userData?.hIdentifier ?? "null")"
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        //RealtimeDatabaseリスナーのデタッチ
+        let rootRef = Database.database().reference()
+        let memRef = rootRef.child("members")
+        memRef.removeObserver(withHandle: membersUpdateEvent!)
     }
     
     override func didReceiveMemoryWarning() {
