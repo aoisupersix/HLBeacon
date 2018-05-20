@@ -102,6 +102,8 @@ class MainViewController: UIViewController {
             segue.destination.preferredContentSize = CGSize(width: 200, height: 100)
             let popView = segue.destination.popoverPresentationController
             popView!.delegate = self
+            let view = segue.destination as! PopoverMenuViewController
+            view.delegate = self
         }
     }
         
@@ -136,5 +138,16 @@ class MainViewController: UIViewController {
 extension MainViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
         return .none
+    }
+}
+
+extension MainViewController: PopoverMenuViewDelegate {
+    
+    func didTouchStatusSelfUpdateButton(sender: Any) {
+        print("touchState")
+    }
+    
+    func didTouchSettingButton(sender: Any) {
+        print("touchSetting")
     }
 }

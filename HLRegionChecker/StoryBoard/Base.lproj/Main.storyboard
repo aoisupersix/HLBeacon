@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="61.600000000000001" y="90.404797601199405"/>
         </scene>
-        <!--View Controller-->
+        <!--Popover Menu View Controller-->
         <scene sceneID="SrT-gy-adi">
             <objects>
-                <viewController id="nA1-D5-URp" sceneMemberID="viewController">
+                <viewController id="nA1-D5-URp" customClass="PopoverMenuViewController" customModule="HLRegionChecker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nPR-Qj-RVI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -153,10 +153,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0B-e4-Hex">
                                         <rect key="frame" x="111" y="0.0" width="153" height="318"/>
                                         <state key="normal" title="ステータスの手動更新"/>
+                                        <connections>
+                                            <action selector="TouchSelfUpdateButton:" destination="nA1-D5-URp" eventType="touchUpInside" id="mkM-IX-VIs"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWC-FQ-OOp">
                                         <rect key="frame" x="172" y="329" width="31" height="318"/>
                                         <state key="normal" title="設定"/>
+                                        <connections>
+                                            <action selector="TouchSettingButton:" destination="nA1-D5-URp" eventType="touchUpInside" id="AnT-p7-vCU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
