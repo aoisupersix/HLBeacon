@@ -66,16 +66,13 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setFirebaseEvent()
-        //updateStatus()
-        //uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateStatus), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //Viewの再描画
+        setFirebaseEvent()
         let userData = RealmUserDataManager().getData()
         slackAuthLabel.text = userData?.slackAccessToken != nil ? "Slack認証済み" : "Slack未認証"
-
         hLabIdentifierLabel.text = "HLabIdentifier: \(userData?.hIdentifier ?? "null")"
     }
     
