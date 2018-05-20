@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
             self.statusLabel.textColor = UIColor.blue
         }else if status == PresenseStatus.IN_CAMPUS.rawValue {
             self.statusLabel.text = "学内"
-            self.statusLabel.textColor = UIColor.green
+            self.statusLabel.textColor = UIColor.orange
         }else {
             self.statusLabel.text = "外出"
             self.statusLabel.textColor = UIColor.darkGray
@@ -99,7 +99,7 @@ class MainViewController: UIViewController {
             let identifierViewController = segue.destination as! IdentifierInputViewController
             identifierViewController.isEnabledDismissButton = true
         }else if segue.identifier == "ShowMenu" {
-            segue.destination.preferredContentSize = CGSize(width: 200, height: 100)
+            segue.destination.preferredContentSize = CGSize(width: 200, height: 150)
             let popView = segue.destination.popoverPresentationController
             popView!.delegate = self
             let view = segue.destination as! PopoverMenuViewController
@@ -114,7 +114,7 @@ class MainViewController: UIViewController {
             statusLabel.textColor = UIColor.blue
         }else if LocationManager.isEnterGeofenceRegion {
             statusLabel.text = "学内"
-            statusLabel.textColor = UIColor.green
+            statusLabel.textColor = UIColor.black
         }else {
             statusLabel.text = "外出"
             statusLabel.textColor = UIColor.darkGray
