@@ -26,7 +26,7 @@ class UserNameInputViewController: UIViewController {
         
         //認可コード取得
         let env = ProcessInfo.processInfo.environment
-        let url = URL(string: "https://slack.com/oauth/authorize?client_id=\(env["SLACK_CLIENT_ID"]!)&scope=users:write")!
+        let url = URL(string: SLACK_AUTHORIZE_URL + "?client_id=\(env["SLACK_CLIENT_ID"]!)&scope=users:write")!
         let callbackUrlScheme = "hl-beacon"
 
         session = SFAuthenticationSession(
@@ -45,7 +45,7 @@ class UserNameInputViewController: UIViewController {
     
     private func getAccessToken(code: String) {
         let env = ProcessInfo.processInfo.environment
-        Alamofire.request("https://slack.com/api/oauth.access?client_id=\(env["SLACK_CLIENT_ID"]!)&client_secret=\(env["SLACK_CLIENT_SECRET"]!)&code=\(code)").responseJSON{
+        Alamofire.request( SLACK_OAUTH_URL + "client_id=\(env["SLACK_CLIENT_ID"]!)&client_secret=\(env["SLACK_CLIENT_SECRET"]!)&code=\(code)").responseJSON{
             response in
             let json = JSON(response.result.value!)
             print("access_token:\(json["access_token"])")
