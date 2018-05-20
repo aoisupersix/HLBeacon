@@ -31,10 +31,44 @@ class MainViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    private func updateStatusLabel(status: Int) {
+        //TODO ステータスの処理
+        if status == PresenseStatus.PRESENSE.rawValue {
+            self.statusLabel.text = "在室"
+            self.statusLabel.textColor = UIColor.blue
+        }else if status == PresenseStatus.IN_CAMPUS.rawValue {
+            self.statusLabel.text = "学内"
+            self.statusLabel.textColor = UIColor.green
+        }else {
+            self.statusLabel.text = "外出"
+            self.statusLabel.textColor = UIColor.darkGray
+        }
+    }
+    
+    private func setFirebaseEvent() {
+        let rootRef = Database.database().reference()
+        let memRef = rootRef.child("members")
+        memRef.observe(.value, with: { (snap: DataSnapshot) in
+            let data = RealmUserDataManager().getData()
+            if data?.hId == nil {
+                return
+            }
+            let members = snap.value as? NSArray ?? []
+            for(idx, member) in members.enumerated() {
+                if idx.description == data?.hId {
+                    let m = member as? NSDictionary
+                    print("updateStatus:id:\(idx)status:\(m!["status"] ?? "nil")")
+                    self.updateStatusLabel(status: (m!["status"] as? Int)!)
+                }
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateStatus()
-        uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateStatus), userInfo: nil, repeats: true)
+        setFirebaseEvent()
+        //updateStatus()
+        //uiUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(MainViewController.updateStatus), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -8,7 +8,7 @@
 import Foundation
 
 enum PresenseStatus: Int {
-    case PRESENSE = 0
+    case PRESENSE = 2
     case IN_CAMPUS = 1
-    case GOING_HOME = 2
+    case GOING_HOME = 0
 }
