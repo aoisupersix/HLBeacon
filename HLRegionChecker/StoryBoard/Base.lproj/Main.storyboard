@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-983" y="92"/>
         </scene>
-        <!--HL-BeaconPeripheral-->
+        <!--HL-RegionChecker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" title="HL-BeaconPeripheral" id="BYZ-38-t0r" customClass="MainViewController" customModule="HLBeacon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="HL-RegionChecker" id="BYZ-38-t0r" customClass="MainViewController" customModule="HLBeacon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +118,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="HL-BeaconPeripheral" id="bMr-yb-tRZ"/>
+                    <navigationItem key="navigationItem" title="HL-RegionChecker" id="bMr-yb-tRZ"/>
                     <connections>
                         <outlet property="hLabIdentifierLabel" destination="gQQ-PH-GAi" id="iEM-uo-Ff1"/>
                         <outlet property="rssiLabel" destination="J1C-VM-T2A" id="csC-Km-eao"/>
