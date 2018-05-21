@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
             self.statusLabel.text = "学内"
             self.statusLabel.textColor = UIColor.orange
         }else {
-            self.statusLabel.text = "外出"
+            self.statusLabel.text = "帰宅"
             self.statusLabel.textColor = UIColor.darkGray
         }
     }
@@ -104,24 +104,6 @@ class MainViewController: UIViewController {
             popView!.delegate = self
             let view = segue.destination as! PopoverMenuViewController
             view.delegate = self
-        }
-    }
-    
-    ///UIのラベルを更新します
-    @objc func updateStatus() {
-        if LocationManager.isEnterBeaconRegion {
-            statusLabel.text = "在室"
-            statusLabel.textColor = UIColor.blue
-        }else if LocationManager.isEnterGeofenceRegion {
-            statusLabel.text = "学内"
-            statusLabel.textColor = UIColor.black
-        }else {
-            statusLabel.text = "外出"
-            statusLabel.textColor = UIColor.darkGray
-        }
-        
-        if LocationManager.rssi != nil {
-            rssiLabel.text = "RSSI: \(LocationManager.rssi!)"
         }
     }
 }
