@@ -54,6 +54,7 @@ class MainViewController: UIViewController {
     /// RealtimeDatabaseの更新トリガーを追加します。
     private func setFirebaseEvent() {
         //ステータス情報の取得
+        hLabstates = []
         let rootRef = Database.database().reference()
         rootRef.observeSingleEvent(of: .value, with: { (snapshot) in
             let ref = snapshot.value as? NSDictionary
