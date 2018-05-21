@@ -12,14 +12,16 @@ import Firebase
 
 class MainViewController: UIViewController {
     
+    /// RealtimeDatabaseのメンバー更新ハンドル
     var membersUpdateEvent: DatabaseHandle? = nil
+    
+    /// ステータス情報
+    var hLabstates: [HLabStatusData] = []
     
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var rssiLabel: UILabel!
     @IBOutlet var slackAuthLabel: UILabel!
     @IBOutlet var hLabIdentifierLabel: UILabel!
-    
-    var uiUpdateTimer: Timer? = nil
     
     /// 確認アラートを表示します。
     /// - parameter title: アラートのタイトル
@@ -42,16 +44,28 @@ class MainViewController: UIViewController {
             self.statusLabel.textColor = UIColor.blue
         }else if status == PresenseStatus.IN_CAMPUS.rawValue {
             self.statusLabel.text = "学内"
-            self.statusLabel.textColor = UIColor.green
+            self.statusLabel.textColor = UIColor.orange
         }else {
-            self.statusLabel.text = "外出"
+            self.statusLabel.text = "帰宅"
             self.statusLabel.textColor = UIColor.darkGray
         }
     }
     
     /// RealtimeDatabaseの更新トリガーを追加します。
     private func setFirebaseEvent() {
+        //ステータス情報の取得
         let rootRef = Database.database().reference()
+        rootRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let ref = snapshot.value as? NSDictionary
+            let states = ref?["status"] as? NSArray ?? []
+            for (idx, states) in states.enumerated() {
+                let s = states as? NSDictionary
+                let status = HLabStatusData(id: idx.description, name: s?["name"] as! String, color: s?["color"] as! String)
+                self.hLabstates.append(status)
+            }
+        })
+        
+        //メンバー情報更新トリガー
         let memRef = rootRef.child("members")
         self.membersUpdateEvent = memRef.observe(.value, with: { (snap: DataSnapshot) in
             let data = RealmUserDataManager().getData()
@@ -67,6 +81,22 @@ class MainViewController: UIViewController {
                 }
             }
         })
+    }
+    
+    /// 引数に与えられたステータスにDBを更新します。
+    /// - parameter stateId: DBのステータスID
+    private func updateStatus(stateId: Int) {
+        print("updateStatus:\(stateId)")
+        
+        let userData = RealmUserDataManager().getData()
+        if userData?.slackAccessToken == nil || userData?.hId == nil {
+            //ユーザ情報不足のため送信不可
+            return
+        }
+        let childUpdates = ["status": stateId]
+        let rootRef = Database.database().reference()
+        let memRef = rootRef.child("members")
+        memRef.child(userData!.hId).updateChildValues(childUpdates)
     }
     
     override func viewDidLoad() {
@@ -98,34 +128,60 @@ class MainViewController: UIViewController {
         if segue.identifier == "ShowIdentifierInputView" {
             let identifierViewController = segue.destination as! IdentifierInputViewController
             identifierViewController.isEnabledDismissButton = true
-        }
-    }
-        
-    ///SlackのOAuth認証を行います
-    @IBAction func PerformSlackAuth(_ sender: Any) {
-        SlackAuthManager().authSlack()
-    }
-    ///IdentifierInputViewに遷移します。
-    @IBAction func PerformIdentifierInputView(_ sender: Any) {
-        self.performSegue(withIdentifier: "ShowIdentifierInputView", sender: nil)
-    }
-    
-    ///UIのラベルを更新します
-    @objc func updateStatus() {
-        if LocationManager.isEnterBeaconRegion {
-            statusLabel.text = "在室"
-            statusLabel.textColor = UIColor.blue
-        }else if LocationManager.isEnterGeofenceRegion {
-            statusLabel.text = "学内"
-            statusLabel.textColor = UIColor.green
-        }else {
-            statusLabel.text = "外出"
-            statusLabel.textColor = UIColor.darkGray
-        }
-        
-        if LocationManager.rssi != nil {
-            rssiLabel.text = "RSSI: \(LocationManager.rssi!)"
+        }else if segue.identifier == "ShowMenu" {
+            segue.destination.preferredContentSize = CGSize(width: 200, height: 150)
+            let popView = segue.destination.popoverPresentationController
+            popView!.delegate = self
+            let view = segue.destination as! PopoverMenuViewController
+            view.delegate = self
         }
     }
 }
 
+extension MainViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}
+
+extension MainViewController: PopoverMenuViewDelegate {
+    
+    private func alertAction(action: UIAlertAction) {
+        print(action.title ?? "nil")
+    }
+    
+    func didTouchStatusSelfUpdateButton(sender: Any) {
+        if hLabstates.count == 0 {
+            return
+        }
+        
+        //ステータスの手動更新アラートを表示
+        let alert = UIAlertController(title: "ステータスの手動更新", message: "ステータスを手動で更新します。更新するステータスを選択してください", preferredStyle: UIAlertControllerStyle.actionSheet)
+
+        //ステータス情報のボタンを取得
+        for status in hLabstates {
+            let statusAction: UIAlertAction = UIAlertAction(title: status.name, style: UIAlertActionStyle.default, handler: {
+                (action: UIAlertAction!) -> Void in
+                self.updateStatus(stateId: Int(status.id)!)
+            })
+            alert.addAction(statusAction)
+        }
+        let cancelAction: UIAlertAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler:{
+            (action: UIAlertAction!) -> Void in
+            print("cancelAction")
+        })
+        
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    /// Slack再認証を行います
+    func didTouchSlackAuthButton(sender: Any) {
+        SlackAuthManager().authSlack()
+    }
+    
+    /// ユーザ識別子選択ビューに遷移します
+    func didTouchUserIdentifierButton(sender: Any) {
+        self.performSegue(withIdentifier: "ShowIdentifierInputView", sender: nil)
+    }
+}
