@@ -14,6 +14,7 @@
 		E17373A0209D4EB60032C0CA /* StatusConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E173739F209D4EB60032C0CA /* StatusConst.swift */; };
 		E187A43420B14A5600BE7CE7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E187A43320B14A5600BE7CE7 /* Default-568h@2x.png */; };
 		E187A43620B1679700BE7CE7 /* PopoverMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187A43520B1679700BE7CE7 /* PopoverMenuViewController.swift */; };
+		E187A43A20B276C400BE7CE7 /* HLabStatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E187A43920B276C400BE7CE7 /* HLabStatusData.swift */; };
 		E195887D2082307F0085E034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887C2082307F0085E034 /* AppDelegate.swift */; };
 		E195887F2082307F0085E034 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E195887E2082307F0085E034 /* MainViewController.swift */; };
 		E19588822082307F0085E034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19588802082307F0085E034 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		E173739F209D4EB60032C0CA /* StatusConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusConst.swift; sourceTree = "<group>"; };
 		E187A43320B14A5600BE7CE7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E187A43520B1679700BE7CE7 /* PopoverMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverMenuViewController.swift; sourceTree = "<group>"; };
+		E187A43920B276C400BE7CE7 /* HLabStatusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLabStatusData.swift; sourceTree = "<group>"; };
 		E19588792082307F0085E034 /* HLRegionChecker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HLRegionChecker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E195887C2082307F0085E034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E195887E2082307F0085E034 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				E19E6CCD2090A15C0042F878 /* SlackUserData.swift */,
 				E19E6CDA20944F010042F878 /* HLabUserData.swift */,
 				E19E6CDC209468930042F878 /* RealmUserData.swift */,
+				E187A43920B276C400BE7CE7 /* HLabStatusData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				E19E6CDB20944F010042F878 /* HLabUserData.swift in Sources */,
 				E1128D3920B1352E0036FE85 /* SlackAuthManager.swift in Sources */,
 				E19E6CDD209468930042F878 /* RealmUserData.swift in Sources */,
+				E187A43A20B276C400BE7CE7 /* HLabStatusData.swift in Sources */,
 				E19E6CD7209308990042F878 /* AsyncImageView.swift in Sources */,
 				E195887D2082307F0085E034 /* AppDelegate.swift in Sources */,
 				E19588912082408D0085E034 /* LocationManager.swift in Sources */,

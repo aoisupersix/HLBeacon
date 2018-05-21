@@ -12,14 +12,16 @@ import Firebase
 
 class MainViewController: UIViewController {
     
+    /// RealtimeDatabaseのメンバー更新ハンドル
     var membersUpdateEvent: DatabaseHandle? = nil
+    
+    /// ステータス情報
+    var hLabstates: [HLabStatusData] = []
     
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var rssiLabel: UILabel!
     @IBOutlet var slackAuthLabel: UILabel!
     @IBOutlet var hLabIdentifierLabel: UILabel!
-    
-    var uiUpdateTimer: Timer? = nil
     
     /// 確認アラートを表示します。
     /// - parameter title: アラートのタイトル
@@ -51,7 +53,19 @@ class MainViewController: UIViewController {
     
     /// RealtimeDatabaseの更新トリガーを追加します。
     private func setFirebaseEvent() {
+        //ステータス情報の取得
         let rootRef = Database.database().reference()
+        rootRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            let ref = snapshot.value as? NSDictionary
+            let states = ref?["status"] as? NSArray ?? []
+            for (idx, states) in states.enumerated() {
+                let s = states as? NSDictionary
+                let status = HLabStatusData(id: idx.description, name: s?["name"] as! String, color: s?["color"] as! String)
+                self.hLabstates.append(status)
+            }
+        })
+        
+        //メンバー情報更新トリガー
         let memRef = rootRef.child("members")
         self.membersUpdateEvent = memRef.observe(.value, with: { (snap: DataSnapshot) in
             let data = RealmUserDataManager().getData()
@@ -67,6 +81,22 @@ class MainViewController: UIViewController {
                 }
             }
         })
+    }
+    
+    /// 引数に与えられたステータスにDBを更新します。
+    /// - parameter stateId: DBのステータスID
+    private func updateStatus(stateId: Int) {
+        print("updateStatus:\(stateId)")
+        
+        let userData = RealmUserDataManager().getData()
+        if userData?.slackAccessToken == nil || userData?.hId == nil {
+            //ユーザ情報不足のため送信不可
+            return
+        }
+        let childUpdates = ["status": stateId]
+        let rootRef = Database.database().reference()
+        let memRef = rootRef.child("members")
+        memRef.child(userData!.hId).updateChildValues(childUpdates)
     }
     
     override func viewDidLoad() {
@@ -121,30 +151,27 @@ extension MainViewController: PopoverMenuViewDelegate {
     }
     
     func didTouchStatusSelfUpdateButton(sender: Any) {
-        //ステータスの手動更新
+        if hLabstates.count == 0 {
+            return
+        }
+        
+        //ステータスの手動更新アラートを表示
         let alert = UIAlertController(title: "ステータスの手動更新", message: "ステータスを手動で更新します。更新するステータスを選択してください", preferredStyle: UIAlertControllerStyle.actionSheet)
-        let presenseAction: UIAlertAction = UIAlertAction(title: "在室", style: UIAlertActionStyle.default, handler:{
-            (action: UIAlertAction!) -> Void in
-            print("在室")
-        })
-        let inCampusAction: UIAlertAction = UIAlertAction(title: "学内", style: UIAlertActionStyle.default, handler:{
-            (action: UIAlertAction!) -> Void in
-            print("学内")
-        })
-        let goingHomeAction: UIAlertAction = UIAlertAction(title: "外出", style: UIAlertActionStyle.default, handler:{
-            (action: UIAlertAction!) -> Void in
-            print("外出")
-        })
+
+        //ステータス情報のボタンを取得
+        for status in hLabstates {
+            let statusAction: UIAlertAction = UIAlertAction(title: status.name, style: UIAlertActionStyle.default, handler: {
+                (action: UIAlertAction!) -> Void in
+                self.updateStatus(stateId: Int(status.id)!)
+            })
+            alert.addAction(statusAction)
+        }
         let cancelAction: UIAlertAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.cancel, handler:{
             (action: UIAlertAction!) -> Void in
             print("cancelAction")
         })
         
-        alert.addAction(presenseAction)
-        alert.addAction(inCampusAction)
-        alert.addAction(goingHomeAction)
         alert.addAction(cancelAction)
-        
         present(alert, animated: true, completion: nil)
     }
     
