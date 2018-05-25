@@ -102,6 +102,13 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //初期化処理
+        let userData = RealmUserDataManager().getData()
+        if(userData?.hId == "" || userData?.hIdentifier == ""){
+            //ユーザ識別子選択へ
+            self.performSegue(withIdentifier: "ShowIdentifierInputView", sender: false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,7 +135,7 @@ class MainViewController: UIViewController {
         //遷移先の戻るボタンを有効化
         if segue.identifier == "ShowIdentifierInputView" {
             let identifierViewController = segue.destination as! IdentifierInputViewController
-            identifierViewController.isEnabledDismissButton = true
+            identifierViewController.isEnabledDismissButton = sender as! Bool
         }else if segue.identifier == "ShowMenu" {
             segue.destination.preferredContentSize = CGSize(width: 200, height: 150)
             let popView = segue.destination.popoverPresentationController
@@ -183,6 +190,6 @@ extension MainViewController: PopoverMenuViewDelegate {
     
     /// ユーザ識別子選択ビューに遷移します
     func didTouchUserIdentifierButton(sender: Any) {
-        self.performSegue(withIdentifier: "ShowIdentifierInputView", sender: nil)
+        self.performSegue(withIdentifier: "ShowIdentifierInputView", sender: true)
     }
 }
