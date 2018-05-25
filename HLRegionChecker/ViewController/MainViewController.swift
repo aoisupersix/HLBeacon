@@ -19,7 +19,6 @@ class MainViewController: UIViewController {
     var hLabstates: [HLabStatusData] = []
     
     @IBOutlet var statusLabel: UILabel!
-    @IBOutlet var rssiLabel: UILabel!
     @IBOutlet var slackAuthLabel: UILabel!
     @IBOutlet var hLabIdentifierLabel: UILabel!
     
