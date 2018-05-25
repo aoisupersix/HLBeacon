@@ -115,7 +115,7 @@ class MainViewController: UIViewController {
         //Viewの再描画
         setFirebaseEvent()
         let userData = RealmUserDataManager().getData()
-        slackAuthLabel.text = userData?.slackAccessToken != nil ? "Slack認証済み" : "Slack未認証"
+        slackAuthLabel.text = userData?.slackAccessToken == "" ? "Slack未認証" : "Slack認証済み"
         hLabIdentifierLabel.text = "HLabIdentifier: \(userData?.hIdentifier ?? "null")"
     }
     
